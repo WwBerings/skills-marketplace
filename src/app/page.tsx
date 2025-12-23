@@ -5,6 +5,7 @@ import { catalogItems } from '@/lib/catalog/skills-agents'
 import { CatalogGrid } from '@/components/catalog-grid'
 import { RequestForm } from '@/components/request-form'
 import { CatalogItem } from '@/lib/catalog/types'
+import { GradientBackground } from '@/components/gradient-background'
 import { ArrowRight } from 'lucide-react'
 
 export default function Home() {
@@ -32,26 +33,29 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative max-w-[1320px] mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32">
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
-          <h1 className="text-foreground text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
-            Marketing Skills & Agents Library
+      <section className="relative max-w-[1320px] mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden">
+        <GradientBackground />
+        <div className="absolute inset-0 -z-10 bg-black/20" />
+        
+        <div className="relative z-10 text-center space-y-6 max-w-3xl mx-auto">
+          <h1 className="text-white text-4xl md:text-5xl lg:text-7xl font-semibold leading-tight tracking-tight">
+            Where marketing meets AI excellence
           </h1>
-          <p className="text-muted-foreground text-base md:text-lg font-medium leading-relaxed">
+          <p className="text-white/80 text-base md:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
             Access powerful marketing skills and AI agents to supercharge your work.
             Select what you need and request access instantly.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-white/70 pt-4">
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-foreground/20 rounded-full"></span>
+              <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
               10 Marketing Skills
             </div>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-foreground/20 rounded-full"></span>
+              <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
               3 AI Agents
             </div>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-foreground/20 rounded-full"></span>
+              <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
               Instant Access
             </div>
           </div>
