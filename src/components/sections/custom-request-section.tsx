@@ -107,14 +107,6 @@ export default function CustomRequestSection() {
     setCurrentStep((prev) => Math.max(prev - 1, 1))
   }
 
-  const handleFormSubmit = (formDataToSubmit: FormData) => {
-    // Add all form state to FormData
-    Object.entries(formData).forEach(([key, value]) => {
-      if (!formDataToSubmit.has(key)) {
-        formDataToSubmit.append(key, value)
-      }
-    })
-  }
 
   if (showSuccess) {
     return (
