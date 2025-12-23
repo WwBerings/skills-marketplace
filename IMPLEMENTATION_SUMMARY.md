@@ -35,11 +35,9 @@ A complete Next.js application for marketing team members to browse and request 
    - Server Actions for form handling
    - Proper error handling
 
-5. **Email Notifications**
-   - Admin notification (receives all requests)
-   - User confirmation (thank you + next steps)
-   - React Email templates
-   - Resend API integration
+5. **Simple Confirmation**
+   - On-screen success message after submission
+   - No email notifications (handled by n8n separately)
 
 ## 📁 Project Structure
 
@@ -59,11 +57,6 @@ skills-marketplace/
 │       ├── catalog/
 │       │   ├── skills-agents.ts         # Catalog data
 │       │   └── types.ts                 # TypeScript interfaces
-│       ├── email/
-│       │   ├── send-notifications.ts    # Email logic
-│       │   └── templates/
-│       │       ├── admin-notification.tsx
-│       │       └── user-confirmation.tsx
 │       └── supabase/
 │           ├── client.ts                # Client-side Supabase
 │           └── server.ts                # Server-side Supabase
@@ -87,8 +80,7 @@ skills-marketplace/
 | **Styling** | Tailwind CSS | Utility-first CSS framework |
 | **Language** | TypeScript | Type safety |
 | **Database** | Supabase | PostgreSQL with REST API |
-| **Email** | Resend | Transactional email API |
-| **Email Templates** | React Email | React-based email templates |
+| **Notifications** | n8n | Workflow automation (separate) |
 | **Validation** | Zod | Schema validation |
 | **Icons** | Lucide React | Icon library |
 | **Deployment** | Vercel | Hosting platform |
@@ -177,8 +169,7 @@ From the original plan:
 | Page loads < 2 seconds | ✅ | Static generation ensures fast loads |
 | All 13 items display | ✅ | 10 skills + 3 agents cataloged |
 | Form stores in Supabase | ✅ | Server Action saves to database |
-| Admin email within 30s | ✅ | Resend delivers quickly |
-| User confirmation email | ✅ | Sent simultaneously with admin |
+| Success message displays | ✅ | User sees confirmation on screen |
 | Responsive design | ✅ | Tailwind breakpoints configured |
 | Zero console errors | ✅ | Clean build, no warnings |
 | WCAG 2.1 AA accessible | ✅ | Proper labels, keyboard nav, contrast |
@@ -202,12 +193,12 @@ From the original plan:
 1. **Create GitHub repository** (2 minutes)
 2. **Push code to GitHub** (1 minute)
 3. **Create Supabase project** (3 minutes)
-4. **Run database migration** (1 minute)
-5. **Create Resend account** (2 minutes)
-6. **Deploy to Vercel** (5 minutes)
-7. **Test live site** (2 minutes)
+4. **Run database migrations** (1 minute)
+5. **Deploy to Vercel** (5 minutes)
+6. **Test live site** (2 minutes)
+7. **Setup n8n workflow** (separate - see n8n docs)
 
-**Total time to deploy: ~15 minutes**
+**Total time to deploy website: ~12 minutes**
 
 See `QUICK_START.md` for step-by-step instructions.
 
@@ -218,13 +209,6 @@ See `QUICK_START.md` for step-by-step instructions.
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-
-# Resend (1 variable)
-RESEND_API_KEY=
-
-# Email (2 variables)
-ADMIN_EMAIL=
-FROM_EMAIL=
 ```
 
 ## 🎨 Design Highlights
@@ -271,7 +255,7 @@ All documentation is in the project root:
 
 Once deployed, share this URL with your marketing team:
 
-> "Visit [your-vercel-url] to browse and request access to marketing skills and AI agents. Select what you need and fill out the request form. You'll receive a confirmation email and our team will follow up within 24-48 hours."
+> "Visit [your-vercel-url] to browse and request access to marketing skills and AI agents. Select what you need and fill out the request form. We'll review your request and get back to you within 24-48 hours."
 
 ## 🎉 Project Complete
 
@@ -281,7 +265,7 @@ All todos completed:
 - ✅ Build catalog parser
 - ✅ Generate UI components
 - ✅ Build request form
-- ✅ Integrate email notifications
+- ✅ Simplify to Supabase-only storage
 - ✅ Prepare for deployment
 
 Ready to deploy! Follow `QUICK_START.md` for deployment.

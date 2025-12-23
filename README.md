@@ -6,8 +6,8 @@ A Next.js application for browsing and requesting access to marketing skills and
 
 - 🎨 Modern, responsive UI built with Tailwind CSS
 - 🔍 Search and filter functionality
-- 📧 Email notifications via Resend
 - 💾 Data storage with Supabase
+- 🔔 Notification workflow via n8n (configured separately)
 - ✨ 10 marketing skills and 3 AI agents available
 
 ## Getting Started
@@ -16,7 +16,7 @@ A Next.js application for browsing and requesting access to marketing skills and
 
 - Node.js 18+ installed
 - Supabase account
-- Resend account (for email notifications)
+- n8n instance (for notifications - configured separately)
 
 ### Setup
 
@@ -33,20 +33,15 @@ npm install
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-
-# Resend
-RESEND_API_KEY=your_resend_api_key
-
-# Email Configuration
-ADMIN_EMAIL=your_admin_email@example.com
-FROM_EMAIL=noreply@yourdomain.com
 ```
 
 3. Set up your Supabase database:
 
 - Go to your Supabase project dashboard
 - Navigate to SQL Editor
-- Run the migration file: `supabase/migrations/001_create_tables.sql`
+- Run the migration files in order:
+  - `supabase/migrations/001_create_tables.sql`
+  - `supabase/migrations/002_add_notified_at.sql`
 
 4. Run the development server:
 
@@ -82,16 +77,13 @@ Make sure to set all required environment variables in your Vercel project setti
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `RESEND_API_KEY`
-- `ADMIN_EMAIL`
-- `FROM_EMAIL`
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Styling**: Tailwind CSS
 - **Database**: Supabase (PostgreSQL)
-- **Email**: Resend with React Email
+- **Notifications**: n8n (configured separately)
 - **Deployment**: Vercel
 - **Icons**: Lucide React
 - **Validation**: Zod
@@ -110,7 +102,6 @@ src/
 │   └── request-form.tsx
 └── lib/
     ├── catalog/          # Catalog data and types
-    ├── email/            # Email utilities and templates
     └── supabase/         # Supabase client setup
 ```
 

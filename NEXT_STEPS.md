@@ -9,7 +9,7 @@ All implementation tasks from the plan have been completed:
 3. ✅ **Catalog System** - 10 skills and 3 agents cataloged
 4. ✅ **UI Components** - Landing page, grid, cards, and form
 5. ✅ **Form Validation** - Server Actions with Zod validation
-6. ✅ **Email System** - Resend integration with React Email templates
+6. ✅ **Supabase Storage** - Simple data storage with notification tracking
 7. ✅ **Documentation** - Comprehensive setup and deployment guides
 
 ## 📍 You Are Here
@@ -29,19 +29,18 @@ Follow the **QUICK_START.md** guide for the fastest path to production.
 
 1. **Create accounts** (if you don't have them):
    - [Supabase](https://supabase.com) - Database
-   - [Resend](https://resend.com) - Email
    - [GitHub](https://github.com) - Code hosting
    - [Vercel](https://vercel.com) - Deployment
+   - n8n instance - Notifications (setup separately)
 
 2. **Setup database** (3 min):
    - Create Supabase project
    - Run the SQL migration from `supabase/migrations/001_create_tables.sql`
    - Copy API credentials
 
-3. **Setup email** (2 min):
-   - Create Resend account
-   - Generate API key
-   - Copy the key
+3. **Configure environment** (1 min):
+   - Create `.env.local` file
+   - Add Supabase credentials
 
 4. **Deploy** (5 min):
    - Create GitHub repo and push code
@@ -52,7 +51,7 @@ Follow the **QUICK_START.md** guide for the fastest path to production.
 5. **Test** (2 min):
    - Visit your live site
    - Submit a test request
-   - Check emails
+   - Check Supabase for data
 
 ## 📚 Documentation Available
 
@@ -72,8 +71,7 @@ Want to test before deploying?
 
 1. **Get credentials:**
    - Create Supabase project
-   - Create Resend account
-   - Copy API keys
+   - Copy Supabase API keys
 
 2. **Add to `.env.local`:**
    ```bash
@@ -81,9 +79,6 @@ Want to test before deploying?
    NEXT_PUBLIC_SUPABASE_URL=your-value
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-value
    SUPABASE_SERVICE_ROLE_KEY=your-value
-   RESEND_API_KEY=your-value
-   ADMIN_EMAIL=your-email@company.com
-   FROM_EMAIL=onboarding@resend.dev
    ```
 
 3. **Run locally:**
@@ -100,9 +95,9 @@ Your marketplace includes:
 
 - 🎨 Modern, responsive UI (mobile, tablet, desktop)
 - 🔍 Search and filter functionality
-- 📧 Email notifications (admin + user)
 - 💾 Supabase database with security
 - ✅ Form validation
+- 🔔 n8n notification workflow (setup separately)
 - 🚀 Production-ready code
 - 📖 Complete documentation
 
@@ -110,7 +105,7 @@ Your marketplace includes:
 
 - **Frontend:** Next.js 15, TypeScript, Tailwind CSS
 - **Backend:** Supabase (PostgreSQL)
-- **Email:** Resend + React Email
+- **Notifications:** n8n (configured separately)
 - **Deployment:** Vercel
 - **All dependencies installed and tested**
 
@@ -129,11 +124,11 @@ Your marketplace includes:
 - Automatic REST API
 - Free tier is generous
 
-**Resend:** Modern email API
-- Simple to use
-- Great deliverability
-- Free tier: 3,000 emails/month
-- Beautiful email templates with React
+**n8n:** Workflow automation
+- Flexible notification system
+- Connect to Teams, Slack, email, etc.
+- Polls Supabase for new requests
+- Setup separately from website
 
 **Vercel:** Best Next.js hosting
 - Auto-deploy from Git
@@ -144,9 +139,9 @@ Your marketplace includes:
 ## 💡 Tips
 
 1. **Start with QUICK_START.md** - It's designed for speed
-2. **Use Resend's test domain** - No domain verification needed for testing
-3. **Check Supabase Table Editor** - See requests come in live
-4. **Test email to yourself first** - Make sure everything works
+2. **Check Supabase Table Editor** - See requests come in live
+3. **Test the form first** - Make sure data saves correctly
+4. **Setup n8n workflow after** - Get notifications working
 5. **Share with one person first** - Get feedback before full launch
 
 ## 🆘 Need Help?

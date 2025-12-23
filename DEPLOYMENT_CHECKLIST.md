@@ -14,11 +14,11 @@ Use this checklist to ensure everything is configured correctly before and after
 - [ ] anon/public key copied
 - [ ] service_role key copied
 
-### ✅ Resend Configuration
+### ✅ n8n Configuration (Separate Setup)
 
-- [ ] Resend account created
-- [ ] API key generated and saved
-- [ ] Domain verified (or using default for testing)
+- [ ] n8n instance available
+- [ ] Teams credentials configured
+- [ ] Postgres connection to Supabase configured
 - [ ] Test email sent successfully
 - [ ] FROM_EMAIL address configured
 
@@ -63,9 +63,6 @@ Use this checklist to ensure everything is configured correctly before and after
   - [ ] NEXT_PUBLIC_SUPABASE_URL
   - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY
   - [ ] SUPABASE_SERVICE_ROLE_KEY
-  - [ ] RESEND_API_KEY
-  - [ ] ADMIN_EMAIL
-  - [ ] FROM_EMAIL
 - [ ] Environment variables set for all environments (Production, Preview, Development)
 - [ ] Build settings correct (npm run build)
 - [ ] Output directory set (.next)
@@ -182,9 +179,8 @@ Use this checklist to ensure everything is configured correctly before and after
 
 - [ ] Vercel Analytics enabled (optional)
 - [ ] Error tracking configured (optional)
-- [ ] Email deliverability monitoring
 - [ ] Database usage monitoring
-- [ ] Admin email notifications working
+- [ ] n8n workflow monitoring (separate setup)
 
 ## Optional Enhancements
 
@@ -192,9 +188,8 @@ Use this checklist to ensure everything is configured correctly before and after
 
 - [ ] Custom domain configured
 - [ ] SSL certificate active
-- [ ] Domain verified in Resend
-- [ ] Email SPF/DKIM configured
 - [ ] Supabase integration installed in Vercel
+- [ ] n8n workflow deployed and active
 - [ ] Backup strategy for database
 - [ ] Monitoring alerts configured
 
@@ -214,9 +209,9 @@ From the plan, verify these success criteria:
 1. [ ] Landing page loads in under 2 seconds
 2. [ ] All 13 items (10 skills + 3 agents) display correctly
 3. [ ] Form submission stores data in Supabase
-4. [ ] Admin receives email notification within 30 seconds
-5. [ ] User receives confirmation email
-6. [ ] Responsive design works on mobile, tablet, desktop
+4. [ ] Success message displays after submission
+5. [ ] Responsive design works on mobile, tablet, desktop
+6. [ ] n8n workflow picks up new requests (test separately)
 7. [ ] Zero console errors in production
 8. [ ] Accessible (WCAG 2.1 AA compliance)
 

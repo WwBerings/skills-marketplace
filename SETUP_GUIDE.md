@@ -8,7 +8,7 @@ Before you begin, make sure you have:
 - Node.js 18+ installed
 - A GitHub account (for deployment)
 - A Supabase account (free tier is sufficient)
-- A Resend account (free tier is sufficient)
+- An n8n instance (for notifications - setup separately)
 
 ## Step 1: Supabase Setup
 
@@ -25,13 +25,17 @@ Before you begin, make sure you have:
 5. Click "Create new project"
 6. Wait 2-3 minutes for the project to be provisioned
 
-### 1.2 Run Database Migration
+### 1.2 Run Database Migrations
 
 1. In your Supabase project dashboard, click on "SQL Editor" in the left sidebar
 2. Click "New query"
 3. Copy and paste the entire contents of `supabase/migrations/001_create_tables.sql`
 4. Click "Run" (or press Cmd/Ctrl + Enter)
 5. You should see a success message
+6. Create another new query
+7. Copy and paste the entire contents of `supabase/migrations/002_add_notified_at.sql`
+8. Click "Run" again
+9. Verify both migrations completed successfully
 
 ### 1.3 Get Your API Credentials
 
@@ -42,61 +46,24 @@ Before you begin, make sure you have:
    - **service_role key**: Under "Project API keys" → "service_role" (click "Reveal" first)
 3. Save these values - you'll need them for the `.env.local` file
 
-## Step 2: Resend Setup
+## Step 2: Environment Variables
 
-### 2.1 Create a Resend Account
+### 2.1 Create `.env.local`
 
-1. Go to [https://resend.com](https://resend.com)
-2. Sign up for a free account
-3. Verify your email address
-
-### 2.2 Get Your API Key
-
-1. In the Resend dashboard, click "API Keys" in the left sidebar
-2. Click "Create API Key"
-3. Give it a name: "skills-marketplace"
-4. Select permissions: "Full access" (for simplicity)
-5. Click "Create"
-6. Copy the API key immediately (you won't be able to see it again!)
-7. Save this value
-
-### 2.3 Verify Your Domain (Optional but Recommended)
-
-For production use:
-1. In Resend, go to "Domains"
-2. Click "Add Domain"
-3. Enter your domain (e.g., `yourdomain.com`)
-4. Follow the DNS configuration instructions
-5. Wait for verification (can take a few minutes)
-
-For testing, you can use the default Resend domain.
-
-## Step 3: Environment Variables
-
-### 3.1 Update `.env.local`
-
-The file `.env.local` already exists in your project. Open it and update with your actual values:
+Create a file named `.env.local` in the project root and add your Supabase credentials:
 
 ```env
 # Supabase (from Step 1.3)
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
-
-# Resend (from Step 2.2)
-RESEND_API_KEY=re_your_api_key_here
-
-# Email Configuration
-ADMIN_EMAIL=your-email@company.com
-FROM_EMAIL=noreply@yourdomain.com
 ```
 
 **Important Notes:**
-- Replace all placeholder values with your actual credentials
+- Replace all placeholder values with your actual credentials from Step 1.3
 - Never commit `.env.local` to Git (it's already in `.gitignore`)
-- `FROM_EMAIL` should match your verified Resend domain
 
-## Step 4: Test Locally
+## Step 3: Test Locally
 
 ### 4.1 Install Dependencies (if not already done)
 
@@ -163,9 +130,6 @@ git push -u origin main
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
-   - `RESEND_API_KEY`
-   - `ADMIN_EMAIL`
-   - `FROM_EMAIL`
 3. For each variable:
    - Paste the **Name** (e.g., `NEXT_PUBLIC_SUPABASE_URL`)
    - Paste the **Value** (your actual credential)
@@ -184,7 +148,6 @@ git push -u origin main
 1. In your Vercel project, go to "Settings" → "Domains"
 2. Enter your custom domain
 3. Follow the DNS configuration instructions
-4. Update `FROM_EMAIL` in environment variables to use your domain
 
 ## Step 6: Install Supabase Integration (Optional)
 
@@ -198,13 +161,6 @@ This makes managing environment variables easier:
 6. This will automatically sync your Supabase credentials
 
 ## Troubleshooting
-
-### Email Not Sending
-
-- Check that `RESEND_API_KEY` is correct
-- Verify `FROM_EMAIL` matches your verified domain
-- Check Resend dashboard for error logs
-- For testing, use a verified email address
 
 ### Database Errors
 
@@ -253,17 +209,19 @@ To add/edit skills or agents:
 ## Next Steps
 
 Once deployed:
-1. Share the URL with your marketing team
-2. Test the full flow with a real request
-3. Set up monitoring for email deliverability
-4. Consider adding the admin dashboard (Phase 7 from plan)
-5. Add analytics to track usage
+1. Set up the n8n workflow for notifications (see separate n8n workflow documentation)
+2. Share the URL with your marketing team
+3. Test the full flow with a real request
+4. Monitor n8n workflow executions
+5. Consider adding an admin dashboard
+6. Add analytics to track usage
 
 ## Support
 
 For issues:
 1. Check the troubleshooting section above
 2. Review Vercel deployment logs
-3. Check Supabase and Resend dashboards
+3. Check Supabase dashboard and logs
 4. Review browser console for client-side errors
+5. Check n8n workflow execution logs for notification issues
 

@@ -2,7 +2,6 @@
 
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/server'
-import { sendBothNotifications } from '@/lib/email/send-notifications'
 
 const requestSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -113,22 +112,8 @@ export async function submitRequest(
       }
     }
 
-    // Send email notifications
-    const emailResult = await sendBothNotifications({
-      name,
-      email,
-      company_team,
-      use_case,
-      selected_items: parsedItems,
-    })
-
-    if (!emailResult.success) {
-      console.error('Email notification failed:', emailResult)
-      // Request was saved, but email failed - still consider it a success
-    }
-
     return {
-      message: 'Request submitted successfully! Check your email for confirmation.',
+      message: 'Request submitted! We\'ll review and get back to you soon.',
       success: true,
     }
   } catch (error) {
