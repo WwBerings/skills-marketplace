@@ -81,6 +81,7 @@ export async function submitRequest(
         company_team,
         use_case,
         status: 'pending',
+        request_type: 'catalog', // Explicitly set as catalog request
       })
       .select()
       .single()

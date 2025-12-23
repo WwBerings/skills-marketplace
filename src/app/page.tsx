@@ -4,10 +4,11 @@ import { useState } from 'react'
 import { catalogItems } from '@/lib/catalog/skills-agents'
 import { CatalogGrid } from '@/components/catalog-grid'
 import { RequestForm } from '@/components/request-form'
-import { ParticleAnimation } from '@/components/particle-animation'
 import { CatalogItem } from '@/lib/catalog/types'
 import { ArrowRight } from 'lucide-react'
 import { LogoCarouselSection } from '@/components/logo-carousel-section'
+import Hero from '@/components/sections/hero'
+import CustomRequestSection from '@/components/sections/custom-request-section'
 
 export default function Home() {
   const [selectedItems, setSelectedItems] = useState<Map<string, CatalogItem>>(new Map())
@@ -31,116 +32,93 @@ export default function Home() {
     }
   }
 
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative pt-8 pb-12 md:pt-12 md:pb-16 min-h-[90vh] flex flex-col items-center justify-center">
-        {/* Header Text - Centered with max-width */}
-        <div className="max-w-[1320px] mx-auto px-6 w-full">
-          <div className="text-center space-y-6 max-w-3xl mx-auto w-full">
-            <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
-              Where marketing meets AI excellence
-            </h1>
-          </div>
-        </div>
-        
-        {/* Particle Animation - Full viewport width */}
-        <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] py-4 md:py-6">
-          <ParticleAnimation />
-        </div>
-        
-        {/* Subheader Text - Centered with max-width */}
-        <div className="max-w-[1320px] mx-auto px-6 w-full">
-          <div className="text-center space-y-4 max-w-3xl mx-auto w-full">
-            <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-2xl mx-auto">
-              Access powerful marketing skills and AI agents to supercharge your work.
-              Select what you need and request access instantly.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-xs md:text-sm text-white/70 pt-2">
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
-                10 Marketing Skills
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
-                3 AI Agents
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 bg-white/40 rounded-full"></span>
-                Instant Access
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section - Prism UI with Particle Animation */}
+      <Hero 
+        onBrowseCatalog={() => scrollToSection('catalog')}
+        onRequestCustom={() => scrollToSection('custom-request')}
+      />
 
       {/* Logo Carousel Section */}
       <LogoCarouselSection />
 
-      {/* Main Content */}
-      <main className="max-w-[1320px] mx-auto px-6 pb-16">
-        {/* Instructions */}
-        <div className="bg-card rounded-lg shadow-sm border border-border p-6 mb-12">
-          <h2 className="text-lg font-semibold text-foreground mb-6">How it works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                  1
+      {/* Catalog Section */}
+      <section id="catalog" className="py-16">
+        <main className="max-w-[1320px] mx-auto px-6">
+          {/* Instructions */}
+          <div className="bg-card rounded-lg shadow-sm border border-border p-6 mb-12">
+            <h2 className="text-lg font-semibold text-foreground mb-6">How it works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
+                    1
+                  </div>
+                  <h3 className="font-medium text-foreground">Browse & Select</h3>
                 </div>
-                <h3 className="font-medium text-foreground">Browse & Select</h3>
+                <p className="text-sm text-muted-foreground pl-11">
+                  Explore our library and select the skills or agents you need
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground pl-11">
-                Explore our library and select the skills or agents you need
-              </p>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                  2
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
+                    2
+                  </div>
+                  <h3 className="font-medium text-foreground">Request Access</h3>
                 </div>
-                <h3 className="font-medium text-foreground">Request Access</h3>
+                <p className="text-sm text-muted-foreground pl-11">
+                  Fill out a quick form with your details and use case
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground pl-11">
-                Fill out a quick form with your details and use case
-              </p>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                  3
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
+                    3
+                  </div>
+                  <h3 className="font-medium text-foreground">Get Access</h3>
                 </div>
-                <h3 className="font-medium text-foreground">Get Access</h3>
+                <p className="text-sm text-muted-foreground pl-11">
+                  Receive instructions and files within 24-48 hours
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground pl-11">
-                Receive instructions and files within 24-48 hours
-              </p>
             </div>
           </div>
-        </div>
 
-        {/* Catalog Grid */}
-        <CatalogGrid
-          items={catalogItems}
-          selectedItems={new Set(selectedItems.keys())}
-          onSelectionChange={handleSelectionChange}
-        />
+          {/* Catalog Grid */}
+          <CatalogGrid
+            items={catalogItems}
+            selectedItems={new Set(selectedItems.keys())}
+            onSelectionChange={handleSelectionChange}
+          />
 
-        {/* Floating Action Button */}
-        {selectedItems.size > 0 && (
-          <div className="fixed bottom-8 right-8 z-40">
-            <button
-              onClick={handleRequestAccess}
-              className="bg-primary text-primary-foreground px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center gap-3 font-medium ring-1 ring-foreground/10"
-            >
-              Request {selectedItems.size} {selectedItems.size === 1 ? 'Item' : 'Items'}
-              <ArrowRight className="h-5 w-5" />
-            </button>
-          </div>
-        )}
-      </main>
+          {/* Floating Action Button */}
+          {selectedItems.size > 0 && (
+            <div className="fixed bottom-8 right-8 z-40">
+              <button
+                onClick={handleRequestAccess}
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-full shadow-lg hover:bg-primary/90 transition-all hover:scale-105 flex items-center gap-3 font-medium ring-1 ring-foreground/10"
+              >
+                Request {selectedItems.size} {selectedItems.size === 1 ? 'Item' : 'Items'}
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+          )}
+        </main>
+      </section>
 
-      {/* Request Form Modal */}
+      {/* Custom Request Section */}
+      <CustomRequestSection />
+
+      {/* Request Form Modal (for catalog items) */}
       {showRequestForm && (
         <RequestForm
           selectedItems={selectedItems}
