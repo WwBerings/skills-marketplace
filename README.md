@@ -1,128 +1,82 @@
 # Skills & Agents Marketplace
 
-A Next.js application for browsing and requesting access to marketing skills and AI agents.
+A Next.js application for browsing and requesting access to marketing skills and AI agents. Features a catalog of ready-to-use solutions plus a custom request flow for bespoke AI agent builds.
 
 ## Features
 
-- 🎨 Modern, responsive UI built with Tailwind CSS
-- 🔍 Search and filter functionality
-- 💾 Data storage with Supabase
-- 🔔 Notification workflow via n8n (configured separately)
-- ✨ 10 marketing skills and 3 AI agents available
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ installed
-- Supabase account
-- n8n instance (for notifications - configured separately)
-
-### Setup
-
-1. Clone the repository and install dependencies:
-
-```bash
-npm install
-```
-
-2. Create a `.env.local` file with your credentials:
-
-```env
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-```
-
-3. Set up your Supabase database:
-
-- Go to your Supabase project dashboard
-- Navigate to SQL Editor
-- Run the migration files in order:
-  - `supabase/migrations/001_create_tables.sql`
-  - `supabase/migrations/002_add_notified_at.sql`
-
-4. Run the development server:
-
-```bash
-npm run dev
-```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-## Database Setup
-
-The application uses two main tables:
-
-- `requests` - Stores user requests with contact info and status
-- `request_items` - Stores the skills/agents selected for each request
-
-Run the SQL migration file in your Supabase dashboard to create these tables with proper Row Level Security (RLS) policies.
-
-## Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Install the Supabase integration from Vercel marketplace
-4. Add all environment variables in Vercel dashboard
-5. Deploy!
-
-### Environment Variables
-
-Make sure to set all required environment variables in your Vercel project settings:
-
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
+- **Catalog Browser** - Browse 10 marketing skills and 3 AI agents with search and filtering
+- **Custom Request Flow** - 4-step inline form for requesting custom AI agent builds
+- **Animated Hero** - Prism UI-inspired hero with particle animation and word reveal
+- **Smooth Navigation** - Single-page design with smooth scroll between sections
+- **Supabase Backend** - PostgreSQL database with Row Level Security
+- **Responsive Design** - Mobile-first, works on all screen sizes
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS
-- **Database**: Supabase (PostgreSQL)
-- **Notifications**: n8n (configured separately)
-- **Deployment**: Vercel
-- **Icons**: Lucide React
-- **Validation**: Zod
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Database:** Supabase (PostgreSQL)
+- **Validation:** Zod
+- **Icons:** Lucide React
+- **Deployment:** Vercel
 
-## Project Structure
+## Quick Start
 
+```bash
+# Install dependencies
+npm install
+
+# Copy environment template and add your Supabase credentials
+cp .env.local.example .env.local
+
+# Run database migrations in Supabase SQL Editor:
+# - supabase/migrations/001_create_tables.sql
+# - supabase/migrations/002_add_custom_requests.sql
+
+# Start development server
+npm run dev
 ```
-src/
-├── app/
-│   ├── actions/          # Server Actions
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Landing page
-├── components/           # React components
-│   ├── catalog-card.tsx
-│   ├── catalog-grid.tsx
-│   └── request-form.tsx
-└── lib/
-    ├── catalog/          # Catalog data and types
-    └── supabase/         # Supabase client setup
-```
 
-## Available Skills
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-1. Brand Voice
-2. Content Repurposer
-3. Direct Response Copy
-4. Email Sequences
-5. Keyword Research
-6. Lead Magnet
-7. Marketing Orchestrator
-8. Newsletter
-9. Positioning Angle
-10. SEO Content
+## Documentation
 
-## Available Agents
+| Document | Purpose |
+|----------|---------|
+| [SETUP.md](SETUP.md) | Complete setup guide with Supabase configuration |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Vercel deployment, checklist, troubleshooting |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Technical reference, database schema, components |
+| [UX_FLOW.md](UX_FLOW.md) | User experience flows and visual mockups |
 
-1. Orchestrator Agent
-2. Coding Agent
-3. n8n Workflow Engineer
+## Two Request Flows
+
+### 1. Catalog Request
+Users browse the catalog, select items, and submit a request via modal form.
+
+### 2. Custom Request
+Users complete a 4-step inline form:
+1. Select business category
+2. Describe current process and pain points
+3. Define desired outcome
+4. Provide contact information
+
+Both flows save to the same `requests` table with a `request_type` field ('catalog' or 'custom').
+
+## Available Items
+
+### Skills (10)
+Brand Voice, Content Repurposer, Direct Response Copy, Email Sequences, Keyword Research, Lead Magnet, Marketing Orchestrator, Newsletter, Positioning Angle, SEO Content
+
+### Agents (3)
+Orchestrator Agent, Coding Agent, n8n Workflow Engineer
+
+## After Deployment
+
+1. Test both request flows on your live site
+2. Monitor submissions in Supabase Table Editor
+3. Configure n8n workflow for notifications (optional)
+4. Share the URL with your team
 
 ## License
 
