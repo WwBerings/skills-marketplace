@@ -24,15 +24,12 @@ export default function Hero({
         className
       )}
     >
-      {/* Gradient Background */}
       <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black via-zinc-900/50 to-black" />
 
-      {/* Particle Animation Background (replaces gradient blob) */}
       <div className="absolute inset-0 w-full h-full opacity-30">
         <ParticleAnimation />
       </div>
 
-      {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0 }}

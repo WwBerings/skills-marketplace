@@ -69,7 +69,6 @@ export default function CustomRequestSection() {
   const [state, formAction, pending] = useActionState(submitCustomRequest, initialState)
   const [showSuccess, setShowSuccess] = useState(false)
 
-  // Show success message
   if (state.success && !showSuccess) {
     setShowSuccess(true)
   }
@@ -147,7 +146,6 @@ export default function CustomRequestSection() {
   return (
     <section id="custom-request" className="py-16 bg-background">
       <div className="max-w-[1320px] mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Need Something Custom?
@@ -157,9 +155,7 @@ export default function CustomRequestSection() {
           </p>
         </div>
 
-        {/* Form Container */}
         <div className="bg-card rounded-lg shadow-sm border border-border p-8 max-w-3xl mx-auto">
-          {/* Progress Indicator */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               {[1, 2, 3, 4].map((step) => (
@@ -190,7 +186,6 @@ export default function CustomRequestSection() {
             </p>
           </div>
 
-          {/* Selected Category Indicator (shown in steps 2-4) */}
           {currentStep > 1 && formData.business_category && (
             <div className="mb-6 p-3 bg-primary/10 border border-primary/20 rounded-lg">
               <div className="flex items-center gap-2">
@@ -202,9 +197,7 @@ export default function CustomRequestSection() {
             </div>
           )}
 
-          {/* Form Steps */}
           <form action={formAction}>
-            {/* Hidden fields to pass all form data */}
             <input type="hidden" name="business_category" value={formData.business_category} />
             <input type="hidden" name="current_process" value={formData.current_process} />
             <input type="hidden" name="pain_points" value={formData.pain_points} />
@@ -214,7 +207,6 @@ export default function CustomRequestSection() {
             <input type="hidden" name="timeline" value={formData.timeline || ''} />
             
             <AnimatePresence mode="wait">
-              {/* Step 1: Business Category */}
               {currentStep === 1 && (
                 <motion.div
                   key="step1"
@@ -250,7 +242,6 @@ export default function CustomRequestSection() {
                 </motion.div>
               )}
 
-              {/* Step 2: Current State */}
               {currentStep === 2 && (
                 <motion.div
                   key="step2"
@@ -296,7 +287,6 @@ export default function CustomRequestSection() {
                 </motion.div>
               )}
 
-              {/* Step 3: Desired Outcome */}
               {currentStep === 3 && (
                 <motion.div
                   key="step3"
@@ -358,7 +348,6 @@ export default function CustomRequestSection() {
                 </motion.div>
               )}
 
-              {/* Step 4: Contact & Timeline */}
               {currentStep === 4 && (
                 <motion.div
                   key="step4"
@@ -421,7 +410,6 @@ export default function CustomRequestSection() {
               )}
             </AnimatePresence>
 
-            {/* Error Message */}
             {state.message && !state.success && (
               <div className="mt-6 bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg">
                 <div className="font-semibold mb-2">{state.message}</div>
@@ -437,7 +425,6 @@ export default function CustomRequestSection() {
               </div>
             )}
 
-            {/* Navigation Buttons */}
             <div className="flex gap-4 mt-8">
               {currentStep > 1 && (
                 <button
@@ -463,12 +450,6 @@ export default function CustomRequestSection() {
                   type="submit"
                   disabled={pending || !validateStep(4)}
                   className="flex-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  onClick={(e) => {
-                    // Prevent submission if validation fails
-                    if (!validateStep(4)) {
-                      e.preventDefault()
-                    }
-                  }}
                 >
                   {pending ? (
                     <>

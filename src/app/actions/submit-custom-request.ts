@@ -106,8 +106,6 @@ export async function submitCustomRequest(
       }
     }
 
-    // No request_items needed for custom requests
-
     return {
       message: "Thanks! I'll review your requirements and get back to you within 24-48 hours with a proposal.",
       success: true,
