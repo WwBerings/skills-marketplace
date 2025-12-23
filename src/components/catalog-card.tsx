@@ -12,51 +12,39 @@ export function CatalogCard({ item, isSelected, onSelect }: CatalogCardProps) {
 
   return (
     <div
-      className={`relative rounded-lg border-2 p-6 transition-all duration-200 hover:shadow-lg ${
+      className={`relative rounded-lg border p-6 transition-all duration-200 hover:shadow-sm ${
         isSelected
-          ? 'border-blue-600 bg-blue-50'
-          : 'border-gray-200 bg-white hover:border-blue-300'
+          ? 'border-foreground bg-secondary'
+          : 'border-border bg-card hover:border-foreground/20'
       }`}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
-            <div
-              className={`flex h-10 w-10 items-center justify-center rounded-lg ${
-                item.type === 'skill' ? 'bg-blue-100' : 'bg-purple-100'
-              }`}
-            >
-              <Icon
-                className={`h-5 w-5 ${
-                  item.type === 'skill' ? 'text-blue-600' : 'text-purple-600'
-                }`}
-              />
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+              <Icon className="h-5 w-5 text-foreground" />
             </div>
-            <div>
-              <h3 className="font-semibold text-gray-900">{item.name}</h3>
-              <span
-                className={`inline-block text-xs font-medium px-2 py-1 rounded-full ${
-                  item.type === 'skill'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-purple-100 text-purple-700'
-                }`}
-              >
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-semibold text-foreground">{item.name}</h3>
+              </div>
+              <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-muted-foreground mt-1">
                 {item.category}
               </span>
             </div>
           </div>
-          <p className="text-sm text-gray-600 mb-4">{item.description}</p>
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{item.description}</p>
         </div>
       </div>
 
-      <label className="flex items-center gap-2 cursor-pointer">
+      <label className="flex items-center gap-2 cursor-pointer group">
         <input
           type="checkbox"
           checked={isSelected}
           onChange={(e) => onSelect(item, e.target.checked)}
-          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          className="h-4 w-4 rounded border-input text-primary focus:ring-ring"
         />
-        <span className="text-sm font-medium text-gray-700">
+        <span className="text-sm font-medium text-foreground group-hover:text-foreground/80">
           {isSelected ? 'Selected' : 'Select this ' + item.type}
         </span>
       </label>

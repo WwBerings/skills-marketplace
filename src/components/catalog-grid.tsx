@@ -58,13 +58,13 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
       <div className="flex flex-col sm:flex-row gap-4">
         {/* Search */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search skills and agents..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background text-foreground"
           />
         </div>
 
@@ -74,8 +74,8 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
             onClick={() => setFilterType('all')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               filterType === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-card text-foreground border border-border hover:bg-secondary'
             }`}
           >
             All
@@ -84,8 +84,8 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
             onClick={() => setFilterType('skill')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               filterType === 'skill'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-card text-foreground border border-border hover:bg-secondary'
             }`}
           >
             Skills
@@ -94,8 +94,8 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
             onClick={() => setFilterType('agent')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               filterType === 'agent'
-                ? 'bg-purple-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-card text-foreground border border-border hover:bg-secondary'
             }`}
           >
             Agents
@@ -104,11 +104,11 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
 
         {/* Category Filter */}
         <div className="relative">
-          <Filter className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
+          <Filter className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="w-full sm:w-48 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white"
+            className="w-full sm:w-48 pl-10 pr-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent appearance-none bg-card text-foreground"
           >
             {categories.map((category) => (
               <option key={category} value={category}>
@@ -120,13 +120,13 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
       </div>
 
       {/* Results count */}
-      <div className="flex items-center justify-between text-sm text-gray-600">
+      <div className="flex items-center justify-between text-sm text-muted-foreground">
         <div>
           Showing {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'}
           {filterType === 'all' && ` (${skillCount} skills, ${agentCount} agents)`}
         </div>
         {selectedItems.size > 0 && (
-          <div className="font-medium text-blue-600">
+          <div className="font-medium text-foreground">
             {selectedItems.size} selected
           </div>
         )}
@@ -146,14 +146,14 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
         </div>
       ) : (
         <div className="text-center py-12">
-          <p className="text-gray-500">No items match your filters.</p>
+          <p className="text-muted-foreground">No items match your filters.</p>
           <button
             onClick={() => {
               setSearchQuery('')
               setFilterType('all')
               setFilterCategory('all')
             }}
-            className="mt-4 text-blue-600 hover:text-blue-700 font-medium"
+            className="mt-4 text-foreground hover:text-foreground/80 font-medium underline-offset-4 hover:underline"
           >
             Clear all filters
           </button>

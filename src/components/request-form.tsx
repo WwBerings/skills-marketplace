@@ -25,19 +25,19 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
 
   if (showSuccess) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-8 text-center">
+      <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div className="bg-card rounded-lg shadow-xl border border-border max-w-md w-full p-8 text-center">
           <div className="flex justify-center mb-4">
-            <CheckCircle2 className="h-16 w-16 text-green-500" />
+            <CheckCircle2 className="h-16 w-16 text-foreground" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h3>
-          <p className="text-gray-600 mb-6">{state.message}</p>
+          <h3 className="text-2xl font-semibold text-foreground mb-2">Request Submitted!</h3>
+          <p className="text-muted-foreground mb-6">{state.message}</p>
           <button
             onClick={() => {
               setShowSuccess(false)
               onClose()
             }}
-            className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             Close
           </button>
@@ -47,14 +47,14 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 overflow-y-auto">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full my-8">
+    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto">
+      <div className="bg-card rounded-lg shadow-xl border border-border max-w-2xl w-full my-8">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Request Access</h2>
+        <div className="flex items-center justify-between p-6 border-b border-border">
+          <h2 className="text-2xl font-semibold text-foreground">Request Access</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-muted-foreground hover:text-foreground transition-colors"
             disabled={pending}
           >
             <X className="h-6 w-6" />
@@ -64,15 +64,15 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
         {/* Form */}
         <form action={formAction} className="p-6 space-y-6">
           {/* Selected Items Summary */}
-          <div className="bg-blue-50 rounded-lg p-4">
-            <h3 className="font-semibold text-gray-900 mb-2">
+          <div className="bg-secondary rounded-lg p-4 border border-border">
+            <h3 className="font-semibold text-foreground mb-2">
               Selected Items ({selectedItems.size})
             </h3>
             <div className="space-y-1">
               {Array.from(selectedItems.values()).map((item) => (
-                <div key={item.id} className="text-sm text-gray-700">
+                <div key={item.id} className="text-sm text-foreground">
                   • {item.name}{' '}
-                  <span className="text-gray-500">({item.type})</span>
+                  <span className="text-muted-foreground">({item.type})</span>
                 </div>
               ))}
             </div>
@@ -93,7 +93,7 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
 
           {/* Name */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
               Your Name *
             </label>
             <input
@@ -102,17 +102,17 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
               name="name"
               required
               disabled={pending}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent disabled:bg-muted disabled:cursor-not-allowed bg-background text-foreground"
               placeholder="John Doe"
             />
             {state.errors?.name && (
-              <p className="mt-1 text-sm text-red-600">{state.errors.name[0]}</p>
+              <p className="mt-1 text-sm text-destructive">{state.errors.name[0]}</p>
             )}
           </div>
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
               Email Address *
             </label>
             <input
@@ -121,11 +121,11 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
               name="email"
               required
               disabled={pending}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent disabled:bg-muted disabled:cursor-not-allowed bg-background text-foreground"
               placeholder="john.doe@company.com"
             />
             {state.errors?.email && (
-              <p className="mt-1 text-sm text-red-600">{state.errors.email[0]}</p>
+              <p className="mt-1 text-sm text-destructive">{state.errors.email[0]}</p>
             )}
           </div>
 
@@ -133,7 +133,7 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
           <div>
             <label
               htmlFor="company_team"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Company/Team *
             </label>
@@ -143,17 +143,17 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
               name="company_team"
               required
               disabled={pending}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+              className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent disabled:bg-muted disabled:cursor-not-allowed bg-background text-foreground"
               placeholder="Marketing Team"
             />
             {state.errors?.company_team && (
-              <p className="mt-1 text-sm text-red-600">{state.errors.company_team[0]}</p>
+              <p className="mt-1 text-sm text-destructive">{state.errors.company_team[0]}</p>
             )}
           </div>
 
           {/* Use Case */}
           <div>
-            <label htmlFor="use_case" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="use_case" className="block text-sm font-medium text-foreground mb-2">
               Use Case / Why do you need these? *
             </label>
             <textarea
@@ -162,17 +162,17 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
               required
               disabled={pending}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed resize-none"
+              className="w-full px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent disabled:bg-muted disabled:cursor-not-allowed resize-none bg-background text-foreground"
               placeholder="Describe how you plan to use these skills/agents... (minimum 20 characters)"
             />
             {state.errors?.use_case && (
-              <p className="mt-1 text-sm text-red-600">{state.errors.use_case[0]}</p>
+              <p className="mt-1 text-sm text-destructive">{state.errors.use_case[0]}</p>
             )}
           </div>
 
           {/* Error Message */}
           {state.message && !state.success && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg">
               {state.message}
             </div>
           )}
@@ -183,14 +183,14 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
               type="button"
               onClick={onClose}
               disabled={pending}
-              className="flex-1 px-6 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-6 py-3 border border-border rounded-lg font-medium text-foreground hover:bg-secondary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={pending}
-              className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="flex-1 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {pending ? (
                 <>
