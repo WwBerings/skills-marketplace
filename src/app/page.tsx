@@ -7,6 +7,7 @@ import { RequestForm } from '@/components/request-form'
 import { ParticleAnimation } from '@/components/particle-animation'
 import { CatalogItem } from '@/lib/catalog/types'
 import { ArrowRight } from 'lucide-react'
+import { LogoCarouselSection } from '@/components/logo-carousel-section'
 
 export default function Home() {
   const [selectedItems, setSelectedItems] = useState<Map<string, CatalogItem>>(new Map())
@@ -72,6 +73,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Logo Carousel Section */}
+      <LogoCarouselSection />
 
       {/* Main Content */}
       <main className="max-w-[1320px] mx-auto px-6 pb-16">
