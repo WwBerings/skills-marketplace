@@ -33,22 +33,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative max-w-[1320px] mx-auto px-6 pt-8 pb-12 md:pt-12 md:pb-16 min-h-[90vh] flex items-center">
-        <div className="text-center space-y-6 max-w-3xl mx-auto w-full">
-          {/* Header Text */}
-          <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
-            Where marketing meets AI excellence
-          </h1>
-          
-          {/* Particle Animation */}
-          <div className="flex items-center justify-center py-4 md:py-6">
-            <div className="w-full h-[250px] md:h-[300px] max-w-xl">
-              <ParticleAnimation />
-            </div>
+      <section className="relative pt-8 pb-12 md:pt-12 md:pb-16 min-h-[90vh] flex flex-col items-center justify-center">
+        {/* Header Text - Centered with max-width */}
+        <div className="max-w-[1320px] mx-auto px-6 w-full">
+          <div className="text-center space-y-6 max-w-3xl mx-auto w-full">
+            <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
+              Where marketing meets AI excellence
+            </h1>
           </div>
-          
-          {/* Subheader Text */}
-          <div className="space-y-4">
+        </div>
+        
+        {/* Particle Animation - Full viewport width */}
+        <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] py-4 md:py-6">
+          <ParticleAnimation />
+        </div>
+        
+        {/* Subheader Text - Centered with max-width */}
+        <div className="max-w-[1320px] mx-auto px-6 w-full">
+          <div className="text-center space-y-4 max-w-3xl mx-auto w-full">
             <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-2xl mx-auto">
               Access powerful marketing skills and AI agents to supercharge your work.
               Select what you need and request access instantly.

@@ -7,6 +7,41 @@ export function ParticleAnimation() {
   const mousePositionRef = useRef({ x: 0, y: 0 })
   const isTouchingRef = useRef(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const animationFrameIdRef = useRef<number>(0)
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Check for prefers-reduced-motion
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches)
+    }
+    
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  // Intersection Observer to pause when off-screen
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    observer.observe(canvas)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -38,6 +73,9 @@ export function ParticleAnimation() {
     }[] = []
 
     let textImageData: ImageData | null = null
+    let frameCount = 0
+    const maxDistance = 120 // Reduced from 150 for better performance
+    const maxDistanceSquared = maxDistance * maxDistance // Cache squared distance
 
     function createTextImage() {
       if (!ctx || !canvas) return 0
@@ -45,18 +83,13 @@ export function ParticleAnimation() {
       ctx.fillStyle = 'white'
       ctx.save()
       
-      const centerX = canvas.width / 2
-      const centerY = canvas.height / 2
+      // Create a full-canvas rectangle shape from particles (edge-to-edge, top-to-bottom)
+      const rectWidth = canvas.width   // Full canvas width
+      const rectHeight = canvas.height // Full canvas height
+      const rectX = 0  // Start at left edge
+      const rectY = 0  // Start at top edge
       
-      // Create a sphere/circle shape from particles
-      const radius = isMobile ? 80 : 120
-      
-      // Draw multiple concentric circles to create a filled sphere effect
-      for (let r = 0; r <= radius; r += 2) {
-        ctx.beginPath()
-        ctx.arc(centerX, centerY, r, 0, Math.PI * 2)
-        ctx.fill()
-      }
+      ctx.fillRect(rectX, rectY, rectWidth, rectHeight)
 
       ctx.restore()
 
@@ -94,30 +127,43 @@ export function ParticleAnimation() {
 
     function createInitialParticles(scale: number) {
       if (!canvas) return
-      const baseParticleCount = isMobile ? 3000 : 5000
-      const particleCount = Math.floor(baseParticleCount * Math.sqrt((canvas.width * canvas.height) / (1920 * 1080)))
+      const baseParticleCount = isMobile ? 2500 : 4000
+      const dpr = window.devicePixelRatio || 1
+      const particleCount = Math.ceil(baseParticleCount * Math.sqrt((canvas.width * canvas.height) / (1920 * 1080)) / dpr)
       for (let i = 0; i < particleCount; i++) {
         const particle = createParticle(scale)
         if (particle) particles.push(particle)
       }
     }
 
-    let animationFrameId: number
-
     function animate(scale: number) {
       if (!ctx || !canvas) return
+      
+      // Skip animation if not visible or reduced motion is preferred
+      if (!isVisible || prefersReducedMotion) {
+        // Draw static version
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        particles.forEach((p) => {
+          ctx.fillStyle = p.color
+          ctx.fillRect(p.baseX, p.baseY, p.size, p.size)
+        })
+        animationFrameIdRef.current = requestAnimationFrame(() => animate(scale))
+        return
+      }
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       const { x: mouseX, y: mouseY } = mousePositionRef.current
-      const maxDistance = 150
+      frameCount++
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
         const dx = mouseX - p.x
         const dy = mouseY - p.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
+        const distanceSquared = dx * dx + dy * dy // Avoid Math.sqrt for performance
 
-        if (distance < maxDistance && (isTouchingRef.current || !('ontouchstart' in window))) {
+        if (distanceSquared < maxDistanceSquared && (isTouchingRef.current || !('ontouchstart' in window))) {
+          const distance = Math.sqrt(distanceSquared) // Only calculate when needed
           const force = (maxDistance - distance) / maxDistance
           const angle = Math.atan2(dy, dx)
           const moveX = Math.cos(angle) * force * 40
@@ -146,14 +192,20 @@ export function ParticleAnimation() {
         }
       }
 
-      const baseParticleCount = isMobile ? 3000 : 5000
-      const targetParticleCount = Math.floor(baseParticleCount * Math.sqrt((canvas.width * canvas.height) / (1920 * 1080)))
-      while (particles.length < targetParticleCount) {
-        const newParticle = createParticle(scale)
-        if (newParticle) particles.push(newParticle)
+      // Only recreate particles every 60 frames to reduce overhead
+      if (frameCount % 60 === 0) {
+        const baseParticleCount = isMobile ? 2500 : 4000
+        const dpr = window.devicePixelRatio || 1
+        const targetParticleCount = Math.ceil(baseParticleCount * Math.sqrt((canvas.width * canvas.height) / (1920 * 1080)) / dpr)
+        
+        while (particles.length < targetParticleCount) {
+          const newParticle = createParticle(scale)
+          if (newParticle) particles.push(newParticle)
+          else break // Exit if we can't create more particles
+        }
       }
 
-      animationFrameId = requestAnimationFrame(() => animate(scale))
+      animationFrameIdRef.current = requestAnimationFrame(() => animate(scale))
     }
 
     const scale = createTextImage()
@@ -161,10 +213,16 @@ export function ParticleAnimation() {
     animate(scale)
 
     const handleResize = () => {
-      updateCanvasSize()
-      const newScale = createTextImage()
-      particles = []
-      createInitialParticles(newScale)
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
+      }
+      
+      resizeTimeoutRef.current = setTimeout(() => {
+        updateCanvasSize()
+        const newScale = createTextImage()
+        particles = []
+        createInitialParticles(newScale)
+      }, 150)
     }
 
     const handleMove = (x: number, y: number) => {
@@ -212,14 +270,22 @@ export function ParticleAnimation() {
       canvas.removeEventListener('mouseleave', handleMouseLeave)
       canvas.removeEventListener('touchstart', handleTouchStart)
       canvas.removeEventListener('touchend', handleTouchEnd)
-      cancelAnimationFrame(animationFrameId)
+      
+      if (animationFrameIdRef.current) {
+        cancelAnimationFrame(animationFrameIdRef.current)
+      }
+      
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current)
+      }
     }
-  }, [isMobile])
+  }, [isMobile, isVisible, prefersReducedMotion])
 
   return (
     <canvas 
       ref={canvasRef} 
       className="w-full h-full touch-none cursor-pointer"
+      style={{ willChange: 'transform' }}
       aria-label="Interactive particle sphere animation"
     />
   )
