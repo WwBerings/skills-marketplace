@@ -101,24 +101,54 @@ export default async function SkillPage({ params }: SkillPageProps) {
               </div>
             )}
 
-            {/* Implementation Instructions */}
-            <ClaudeInstructions skillName={skill.name} />
+            {/* Implementation Instructions - only for skills */}
+            {skill.type === 'skill' && (
+              <ClaudeInstructions skillName={skill.name} />
+            )}
           </div>
 
-          {/* Right Column - Download Form */}
+          {/* Right Column - Download Form or Agent Teaser */}
           <div className="lg:sticky lg:top-8 lg:self-start space-y-4">
-            <DownloadForm skillId={skill.id} skillName={skill.name} />
-            
-            {/* ChatGPT Coming Soon Teaser */}
-            <div className="bg-card/50 rounded-lg border border-dashed border-border p-4">
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles className="h-4 w-4 text-emerald-500" />
-                <span className="text-sm font-medium text-foreground">Coming soon</span>
+            {skill.type === 'skill' ? (
+              <>
+                <DownloadForm skillId={skill.id} skillName={skill.name} />
+                
+                {/* ChatGPT Coming Soon Teaser */}
+                <div className="bg-card/50 rounded-lg border border-dashed border-border p-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Sparkles className="h-4 w-4 text-emerald-500" />
+                    <span className="text-sm font-medium text-foreground">Coming soon</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    ChatGPT Custom GPT version will be available soon.
+                  </p>
+                </div>
+              </>
+            ) : (
+              /* Agent Coming Soon Teaser */
+              <div className="bg-card rounded-lg border border-border p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <Sparkles className="h-5 w-5 text-amber-500" />
+                  <span className="text-lg font-semibold text-foreground">Coming Soon</span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  This agent is currently in development and will be available soon as:
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    ChatGPT Custom GPT
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    Claude Project instructions
+                  </li>
+                </ul>
+                <p className="text-xs text-muted-foreground">
+                  Want early access? Join our waitlist.
+                </p>
               </div>
-              <p className="text-xs text-muted-foreground">
-                ChatGPT Custom GPT version will be available soon.
-              </p>
-            </div>
+            )}
           </div>
         </div>
       </main>
