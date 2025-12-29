@@ -1,6 +1,12 @@
 ---
 name: content-repurposer
-description: Turn one piece into fifteen. Extract hooks, transform for platforms, maintain voice across channels. Use this skill when repurposing content, creating social posts from articles, turning newsletters into threads, adapting content for different platforms, or maximizing reach from existing content. Triggers on repurpose, content distribution, turn this into, adapt for [platform], social posts from article, or "make more content from this."
+description: >
+  Turn one piece into fifteen. Extract hooks, transform for platforms, maintain
+  voice across channels. Use this skill when repurposing content, creating social
+  posts from articles, turning newsletters into threads, adapting content for
+  different platforms, or maximizing reach from existing content. Triggers on
+  repurpose, content distribution, turn this into, adapt for platform, social
+  posts from article, or make more content from this.
 ---
 
 # Content Repurposer

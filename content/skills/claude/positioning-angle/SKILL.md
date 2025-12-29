@@ -1,6 +1,13 @@
 ---
 name: positioning-angle
-description: Surface differentiated hooks and unique angles BEFORE writing any marketing copy. Use this skill when launching something new, repositioning existing offers, finding what makes you different, crafting value propositions, or when copy isn't converting because the angle is weak. Contains 8 positioning frameworks to find hooks that make things sell. Triggers on positioning, differentiation, unique angle, value proposition, "why should they buy," competitive advantage, or "what makes us different."
+description: >
+  Surface differentiated hooks and unique angles BEFORE writing any marketing copy.
+  Use this skill when launching something new, repositioning existing offers,
+  finding what makes you different, crafting value propositions, or when copy
+  isn't converting because the angle is weak. Contains 8 positioning frameworks
+  to find hooks that make things sell. Triggers on positioning, differentiation,
+  unique angle, value proposition, why should they buy, competitive advantage,
+  or what makes us different.
 ---
 
 # Positioning Angle

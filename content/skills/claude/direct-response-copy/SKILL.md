@@ -1,6 +1,12 @@
 ---
 name: direct-response-copy
-description: Sales pages that convert using architecture and persuasion principles—not templates. Use this skill when writing sales pages, landing pages, ads, or any copy meant to drive immediate action. Teaches page architecture (how to structure for conversion) and persuasion principles (why people say yes). NOT a template factory. Triggers on sales page, landing page, conversion copy, persuasive writing, copywriting, direct response, selling with words, or "make them buy."
+description: >
+  Sales pages that convert using architecture and persuasion principles, not
+  templates. Use this skill when writing sales pages, landing pages, ads, or any
+  copy meant to drive immediate action. Teaches page architecture (how to structure
+  for conversion) and persuasion principles (why people say yes). NOT a template
+  factory. Triggers on sales page, landing page, conversion copy, persuasive
+  writing, copywriting, direct response, selling with words, or make them buy.
 ---
 
 # Direct Response Copy

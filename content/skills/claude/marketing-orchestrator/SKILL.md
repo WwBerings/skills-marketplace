@@ -1,6 +1,13 @@
 ---
 name: marketing-orchestrator
-description: Diagnoses what you need and sequences skills in the right order. Use this skill when unsure where to start, need help choosing the right marketing approach, want guidance on which skills to use, or have a marketing goal but don't know the steps. This is the guide that asks qualifying questions, diagnoses your situation, and routes you to the right specialist skills. Triggers on "help me with marketing," "where do I start," "what should I do," marketing strategy, marketing guidance, or "I need to [marketing goal]."
+description: >
+  Diagnoses what you need and sequences skills in the right order. Use this skill
+  when unsure where to start, need help choosing the right marketing approach,
+  want guidance on which skills to use, or have a marketing goal but don't know
+  the steps. This is the guide that asks qualifying questions, diagnoses your
+  situation, and routes you to the right specialist skills. Triggers on help me
+  with marketing, where do I start, what should I do, marketing strategy,
+  marketing guidance, or I need to achieve a marketing goal.
 ---
 
 # Marketing Orchestrator

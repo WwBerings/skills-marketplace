@@ -1,6 +1,11 @@
 ---
 name: brand-voice
-description: Capture and apply your unique writing voice to all marketing content. Use this skill when you need to define your brand's sound (tone, rhythm, vocabulary, beliefs), analyze existing content to extract voice patterns, or ensure any piece of copy sounds like YOU instead of generic AI. Triggers on requests about voice, tone, writing style, brand personality, or making content "sound like me."
+description: >
+  Capture and apply your unique writing voice to all marketing content. Use this
+  skill when you need to define your brand's sound (tone, rhythm, vocabulary,
+  beliefs), analyze existing content to extract voice patterns, or ensure any
+  piece of copy sounds like YOU instead of generic AI. Triggers on requests about
+  voice, tone, writing style, brand personality, or making content sound like me.
 ---
 
 # Brand Voice

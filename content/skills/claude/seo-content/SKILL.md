@@ -1,6 +1,12 @@
 ---
 name: seo-content
-description: "Rank. Sound human." Create high-quality articles that rank in search engines while sounding like a real person wrote them. Use this skill when writing blog posts, articles, guides, or any content meant to drive organic search traffic. Covers structure for search engines and voice for people. Triggers on SEO content, blog post, article writing, organic traffic, ranking content, search optimization, content brief, or "write an article about."
+description: >
+  Rank and sound human. Create high-quality articles that rank in search engines
+  while sounding like a real person wrote them. Use this skill when writing blog
+  posts, articles, guides, or any content meant to drive organic search traffic.
+  Covers structure for search engines and voice for people. Triggers on SEO content,
+  blog post, article writing, organic traffic, ranking content, search optimization,
+  content brief, or write an article about.
 ---
 
 # SEO Content

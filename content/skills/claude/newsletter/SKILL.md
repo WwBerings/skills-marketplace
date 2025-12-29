@@ -1,6 +1,12 @@
 ---
 name: newsletter
-description: Turn content into recurring audience touchpoints with 9 newsletter formats. Use this skill when creating email newsletters, planning newsletter strategy, choosing newsletter formats, writing newsletter editions, or building audience relationships through email. Covers format selection from curated to story-driven, and how to maintain consistency. Triggers on newsletter, email newsletter, weekly email, audience building, subscriber communication, or "write a newsletter."
+description: >
+  Turn content into recurring audience touchpoints with 9 newsletter formats.
+  Use this skill when creating email newsletters, planning newsletter strategy,
+  choosing newsletter formats, writing newsletter editions, or building audience
+  relationships through email. Covers format selection from curated to story-driven,
+  and how to maintain consistency. Triggers on newsletter, email newsletter, weekly
+  email, audience building, subscriber communication, or write a newsletter.
 ---
 
 # Newsletter
