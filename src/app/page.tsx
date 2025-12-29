@@ -5,6 +5,7 @@ import { CatalogGrid } from '@/components/catalog-grid'
 import { LogoCarouselSection } from '@/components/logo-carousel-section'
 import Hero from '@/components/sections/hero'
 import CustomRequestSection from '@/components/sections/custom-request-section'
+import WaitlistSection from '@/components/sections/waitlist-section'
 import { Footer } from '@/components/footer'
 
 export default function Home() {
@@ -76,6 +77,9 @@ export default function Home() {
 
       {/* Custom Request Section */}
       <CustomRequestSection />
+
+      {/* Waitlist Section */}
+      <WaitlistSection />
 
       {/* Footer */}
       <Footer />
