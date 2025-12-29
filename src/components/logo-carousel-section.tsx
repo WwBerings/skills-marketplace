@@ -35,7 +35,7 @@ const logos = [
 
 export function LogoCarouselSection() {
   return (
-    <section className="max-w-[1320px] mx-auto px-6 mb-12">
+    <section className="max-w-[1320px] mx-auto px-6 mb-12 pt-16 md:pt-24">
       <div className="text-center space-y-4 mb-8">
         <p className="text-xs font-medium tracking-widest text-white/60 uppercase">
           Stop accepting mediocre AI output

@@ -24,11 +24,19 @@ export default function Hero({
         className
       )}
     >
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black via-zinc-900/50 to-black" />
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black via-zinc-900/50 via-80% to-transparent" />
 
       <div className="absolute inset-0 w-full h-full opacity-30">
         <ParticleAnimation />
       </div>
+
+      {/* Bottom fade transition overlay */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none z-[5]"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, var(--background))'
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         <motion.div
