@@ -3,8 +3,7 @@ import { catalogItems } from '@/lib/catalog/skills-agents'
 import { createClient } from '@/lib/supabase/server'
 import fs from 'fs/promises'
 import path from 'path'
-import archiver from 'archiver'
-import { PassThrough } from 'stream'
+import JSZip from 'jszip'
 
 export async function GET(
   request: NextRequest,
@@ -13,6 +12,8 @@ export async function GET(
   try {
     const { id } = await params
     const email = request.nextUrl.searchParams.get('email')
+
+    console.log(`[Download] Starting download for skill: ${id}`)
 
     // Validate email
     if (!email || !email.includes('@')) {
@@ -25,6 +26,7 @@ export async function GET(
     // Find the skill in catalog
     const skill = catalogItems.find((item) => item.id === id)
     if (!skill) {
+      console.log(`[Download] Skill not found: ${id}`)
       return NextResponse.json(
         { error: 'Skill not found' },
         { status: 404 }
@@ -41,7 +43,7 @@ export async function GET(
       })
     } catch (dbError) {
       // Log but don't fail the download if tracking fails
-      console.error('Failed to log download:', dbError)
+      console.error('[Download] Failed to log download:', dbError)
     }
 
     // Resolve paths - folderPath points to skill folder, skillFilename is the SKILL.md file
@@ -49,76 +51,79 @@ export async function GET(
     const folderPath = path.resolve(skillsMarketplacePath, skill.folderPath)
     const skillFilePath = path.join(folderPath, skill.skillFilename)
 
+    console.log(`[Download] Looking for skill at: ${skillFilePath}`)
+
     // Verify the skill file exists
     try {
       await fs.access(skillFilePath)
     } catch {
-      console.error('Skill file not found:', skillFilePath)
+      console.error(`[Download] Skill file not found: ${skillFilePath}`)
       return NextResponse.json(
         { error: 'Skill file not found' },
         { status: 404 }
       )
     }
 
-    // Create ZIP archive
-    const archive = archiver('zip', { zlib: { level: 9 } })
-    const chunks: Buffer[] = []
+    // Create ZIP using JSZip (Promise-based, works in serverless)
+    const zip = new JSZip()
+    const skillFolder = zip.folder(skill.id)
 
-    // Collect chunks into buffer
-    const passthrough = new PassThrough()
-    passthrough.on('data', (chunk: Buffer) => chunks.push(chunk))
-
-    archive.pipe(passthrough)
-
-    // Skill folder name inside ZIP (matches skill id)
-    const skillFolderName = skill.id
+    if (!skillFolder) {
+      throw new Error('Failed to create folder in ZIP')
+    }
 
     // Add the main SKILL.md file (with frontmatter preserved!)
-    // Place inside skill folder: skill-name/SKILL.md
     const skillContent = await fs.readFile(skillFilePath, 'utf-8')
-    archive.append(skillContent, { name: `${skillFolderName}/SKILL.md` })
+    skillFolder.file('SKILL.md', skillContent)
+    console.log(`[Download] Added SKILL.md to ZIP`)
 
     // Check for references folder and add if exists
-    // Place inside skill folder: skill-name/references/
     const referencesPath = path.join(folderPath, 'references')
     try {
       const refStats = await fs.stat(referencesPath)
       if (refStats.isDirectory()) {
-        archive.directory(referencesPath, `${skillFolderName}/references`)
+        const refFiles = await fs.readdir(referencesPath)
+        const refsFolder = skillFolder.folder('references')
+        
+        if (refsFolder) {
+          for (const file of refFiles) {
+            const filePath = path.join(referencesPath, file)
+            const fileStats = await fs.stat(filePath)
+            
+            if (fileStats.isFile()) {
+              const content = await fs.readFile(filePath, 'utf-8')
+              refsFolder.file(file, content)
+              console.log(`[Download] Added reference: ${file}`)
+            }
+          }
+        }
       }
     } catch {
       // No references folder, that's fine
+      console.log(`[Download] No references folder found`)
     }
 
-    // Finalize archive
-    await archive.finalize()
-
-    // Wait for all chunks to be collected
-    await new Promise<void>((resolve, reject) => {
-      passthrough.on('end', resolve)
-      passthrough.on('error', reject)
-    })
-
-    // Combine all chunks into a single buffer
-    const zipBuffer = Buffer.concat(chunks)
+    // Generate ZIP as blob
+    console.log(`[Download] Generating ZIP...`)
+    const zipBlob = await zip.generateAsync({ type: 'blob' })
+    console.log(`[Download] ZIP created, size: ${zipBlob.size} bytes`)
 
     // Generate clean filename
     const filename = `${skill.name.toLowerCase().replace(/\s+/g, '-')}.zip`
 
     // Return ZIP file as download
-    return new NextResponse(zipBuffer, {
+    return new NextResponse(zipBlob, {
       headers: {
         'Content-Type': 'application/zip',
         'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Length': zipBuffer.length.toString(),
+        'Content-Length': zipBlob.size.toString(),
       },
     })
   } catch (error) {
-    console.error('Download error:', error)
+    console.error('[Download] Error:', error)
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
     )
   }
 }
-
