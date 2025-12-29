@@ -5,6 +5,7 @@ import { CatalogGrid } from '@/components/catalog-grid'
 import { LogoCarouselSection } from '@/components/logo-carousel-section'
 import Hero from '@/components/sections/hero'
 import CustomRequestSection from '@/components/sections/custom-request-section'
+import { Footer } from '@/components/footer'
 
 export default function Home() {
   const scrollToSection = (sectionId: string) => {
@@ -40,7 +41,7 @@ export default function Home() {
                   <h3 className="font-medium text-foreground">Browse Skills</h3>
                 </div>
                 <p className="text-sm text-muted-foreground pl-11">
-                  Explore our library of Claude skills and agents for marketing
+                  Explore our library of AI skills and agents for marketing
                 </p>
               </div>
               <div className="space-y-2">
@@ -51,7 +52,7 @@ export default function Home() {
                   <h3 className="font-medium text-foreground">Download & Learn</h3>
                 </div>
                 <p className="text-sm text-muted-foreground pl-11">
-                  Click any skill to see details and download the file with instructions
+                  Click any skill to see details and download with setup instructions
                 </p>
               </div>
               <div className="space-y-2">
@@ -59,10 +60,10 @@ export default function Home() {
                   <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
                     3
                   </div>
-                  <h3 className="font-medium text-foreground">Use in Claude</h3>
+                  <h3 className="font-medium text-foreground">Start Using</h3>
                 </div>
                 <p className="text-sm text-muted-foreground pl-11">
-                  Upload the skill file to your Claude Project and start using it
+                  Add the skill to your AI assistant and start getting better results
                 </p>
               </div>
             </div>
@@ -75,6 +76,9 @@ export default function Home() {
 
       {/* Custom Request Section */}
       <CustomRequestSection />
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }
