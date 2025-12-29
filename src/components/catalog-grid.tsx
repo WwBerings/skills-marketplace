@@ -7,11 +7,9 @@ import { Search, Filter } from 'lucide-react'
 
 interface CatalogGridProps {
   items: CatalogItem[]
-  selectedItems: Set<string>
-  onSelectionChange: (itemId: string, selected: boolean, item: CatalogItem) => void
 }
 
-export function CatalogGrid({ items, selectedItems, onSelectionChange }: CatalogGridProps) {
+export function CatalogGrid({ items }: CatalogGridProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState<'all' | 'skill' | 'agent'>('all')
   const [filterCategory, setFilterCategory] = useState<string>('all')
@@ -120,28 +118,16 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
       </div>
 
       {/* Results count */}
-      <div className="flex items-center justify-between text-sm text-muted-foreground">
-        <div>
-          Showing {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'}
-          {filterType === 'all' && ` (${skillCount} skills, ${agentCount} agents)`}
-        </div>
-        {selectedItems.size > 0 && (
-          <div className="font-medium text-foreground">
-            {selectedItems.size} selected
-          </div>
-        )}
+      <div className="text-sm text-muted-foreground">
+        Showing {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'}
+        {filterType === 'all' && ` (${skillCount} skills, ${agentCount} agents)`}
       </div>
 
       {/* Grid */}
       {filteredItems.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
-            <CatalogCard
-              key={item.id}
-              item={item}
-              isSelected={selectedItems.has(item.id)}
-              onSelect={(item, selected) => onSelectionChange(item.id, selected, item)}
-            />
+            <CatalogCard key={item.id} item={item} />
           ))}
         </div>
       ) : (
@@ -162,4 +148,3 @@ export function CatalogGrid({ items, selectedItems, onSelectionChange }: Catalog
     </div>
   )
 }
-

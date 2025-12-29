@@ -1,17 +1,21 @@
 import { CatalogItem } from './types'
-import fs from 'fs'
-import path from 'path'
 
 // Define the catalog items directly based on the existing structure
 export const catalogItems: CatalogItem[] = [
-  // Skills from skills_domain_focus
+  // Claude Skills from content/skills/claude/
   {
     id: 'brand-voice',
     type: 'skill',
     name: 'Brand Voice',
     description: 'Capture and apply your unique writing voice to all marketing content. Define your brand\'s sound (tone, rhythm, vocabulary, beliefs) and ensure any piece of copy sounds like YOU instead of generic AI.',
     category: 'Content Creation',
-    filePath: '../skills_domain_focus/brand-voice/brand_voice_SKILL.md'
+    folderPath: 'content/skills/claude/brand-voice',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Capturing voice from scratch',
+      'Applying voice to existing content',
+      'Auditing content for voice consistency'
+    ]
   },
   {
     id: 'content-repurposer',
@@ -19,7 +23,14 @@ export const catalogItems: CatalogItem[] = [
     name: 'Content Repurposer',
     description: 'Transform existing content across multiple platforms while maintaining voice consistency. Extract key insights and adapt them for different channels and audiences.',
     category: 'Content Creation',
-    filePath: '../skills_domain_focus/content-repurposer/SKILL.md'
+    folderPath: 'content/skills/claude/content-repurposer',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'After publishing new content',
+      'Running a content audit',
+      'Expanding to new platforms',
+      'Batch content creation'
+    ]
   },
   {
     id: 'direct-response-copy',
@@ -27,7 +38,14 @@ export const catalogItems: CatalogItem[] = [
     name: 'Direct Response Copy',
     description: 'Create high-converting sales pages, landing pages, and promotional content using proven persuasion principles and psychological frameworks.',
     category: 'Sales & Conversion',
-    filePath: '../skills_domain_focus/direct-response-copy/SKILL.md'
+    folderPath: 'content/skills/claude/direct-response-copy',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Writing sales pages',
+      'Creating landing pages',
+      'Launch campaigns',
+      'Promotional emails'
+    ]
   },
   {
     id: 'email-sequences',
@@ -35,7 +53,14 @@ export const catalogItems: CatalogItem[] = [
     name: 'Email Sequences',
     description: 'Build strategic email sequences for nurture campaigns, onboarding flows, and promotional series that drive engagement and conversions.',
     category: 'Email Marketing',
-    filePath: '../skills_domain_focus/email-sequences/SKILL.md'
+    folderPath: 'content/skills/claude/email-sequences',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Welcome sequences',
+      'Nurture campaigns',
+      'Sales sequences',
+      'Launch campaigns'
+    ]
   },
   {
     id: 'keyword-research',
@@ -43,7 +68,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Keyword Research',
     description: 'Discover high-value keywords for your content strategy using search intent analysis, competitive research, and trend identification.',
     category: 'SEO',
-    filePath: '../skills_domain_focus/keyword-research/SKILL.md'
+    folderPath: 'content/skills/claude/keyword-research',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Starting a content strategy',
+      'Competitive analysis',
+      'Finding content gaps'
+    ]
   },
   {
     id: 'lead-magnet',
@@ -51,7 +82,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Lead Magnet',
     description: 'Design and create compelling lead magnets (guides, checklists, templates) that attract your ideal audience and grow your email list.',
     category: 'Lead Generation',
-    filePath: '../skills_domain_focus/lead-magnet/SKILL.md'
+    folderPath: 'content/skills/claude/lead-magnet',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Growing your email list',
+      'Attracting ideal audience',
+      'Creating opt-in incentives'
+    ]
   },
   {
     id: 'marketing-orchestrator',
@@ -59,7 +96,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Marketing Orchestrator',
     description: 'Coordinate multi-channel marketing campaigns with strategic planning, content calendars, and cross-platform consistency.',
     category: 'Strategy',
-    filePath: '../skills_domain_focus/marketing-orchestrator/SKILL.md'
+    folderPath: 'content/skills/claude/marketing-orchestrator',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Multi-channel campaigns',
+      'Content calendar planning',
+      'Cross-platform consistency'
+    ]
   },
   {
     id: 'newsletter',
@@ -67,7 +110,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Newsletter',
     description: 'Create engaging email newsletters that build relationships with subscribers, share valuable insights, and drive consistent engagement.',
     category: 'Email Marketing',
-    filePath: '../skills_domain_focus/newsletter/SKILL.md'
+    folderPath: 'content/skills/claude/newsletter',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Building subscriber relationships',
+      'Sharing insights regularly',
+      'Driving consistent engagement'
+    ]
   },
   {
     id: 'positioning-angle',
@@ -75,7 +124,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Positioning Angle',
     description: 'Develop unique market positioning and messaging angles that differentiate your brand and resonate with your target audience.',
     category: 'Strategy',
-    filePath: '../skills_domain_focus/positioning-angle/SKILL.md'
+    folderPath: 'content/skills/claude/positioning-angle',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Differentiating from competitors',
+      'Finding unique messaging',
+      'Defining market position'
+    ]
   },
   {
     id: 'seo-content',
@@ -83,7 +138,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'SEO Content',
     description: 'Write search-optimized content that ranks well in Google while providing genuine value to readers. Balance keywords with quality.',
     category: 'SEO',
-    filePath: '../skills_domain_focus/seo-content/SKILL.md'
+    folderPath: 'content/skills/claude/seo-content',
+    skillFilename: 'SKILL.md',
+    contextItems: [
+      'Writing for search rankings',
+      'Balancing SEO with readability',
+      'Optimizing existing content'
+    ]
   },
   // Agents from Agent_Team_ProcessFocus
   {
@@ -92,7 +153,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Orchestrator Agent',
     description: 'Your intake point for all work requests. Clarifies requirements, routes to specialist agents, and manages project tracking in Notion.',
     category: 'Project Management',
-    filePath: '../Agent_Team_ProcessFocus/orchestrator_agent.md'
+    folderPath: '../Agent_Team_ProcessFocus',
+    skillFilename: 'orchestrator_agent.md',
+    contextItems: [
+      'Intake & clarify work requests',
+      'Route to specialist agents',
+      'Track projects in Notion'
+    ]
   },
   {
     id: 'coding-agent',
@@ -100,7 +167,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'Coding Agent',
     description: 'Builds and modifies code with discipline. Specs before code, iterates in chunks, always reviews before shipping. Your junior dev who delivers clean, working code.',
     category: 'Development',
-    filePath: '../Agent_Team_ProcessFocus/coding_agent.md'
+    folderPath: '../Agent_Team_ProcessFocus',
+    skillFilename: 'coding_agent.md',
+    contextItems: [
+      'Build and modify code',
+      'Spec-first development',
+      'Bug fixes and features'
+    ]
   },
   {
     id: 'n8n-workflow-engineer',
@@ -108,7 +181,13 @@ export const catalogItems: CatalogItem[] = [
     name: 'n8n Workflow Engineer',
     description: 'Builds functional n8n workflows that work immediately when imported. Translates business requirements into working automation with proper configurations.',
     category: 'Automation',
-    filePath: '../Agent_Team_ProcessFocus/n8nworkflow_agent.md'
+    folderPath: '../Agent_Team_ProcessFocus',
+    skillFilename: 'n8nworkflow_agent.md',
+    contextItems: [
+      'Build n8n automation workflows',
+      'Translate requirements to working JSON',
+      'Debug and modify existing workflows'
+    ]
   }
 ]
 

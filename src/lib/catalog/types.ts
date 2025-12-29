@@ -1,10 +1,15 @@
+export type ToolType = 'claude' | 'chatgpt' | 'n8n'
+
 export interface CatalogItem {
   id: string
   type: 'skill' | 'agent'
   name: string
   description: string
   category: string
-  filePath: string
+  folderPath: string      // Path to the skill folder (contains SKILL.md and optional references/)
+  skillFilename: string   // Name of the main skill file (e.g., 'SKILL.md' or 'brand_voice_SKILL.md')
+  contextItems: string[]  // "Use when:" for skills, "Handles:" for agents
+  toolType?: ToolType     // Default: 'claude' - for future ChatGPT/n8n support
 }
 
 export interface Request {

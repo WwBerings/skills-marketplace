@@ -65,14 +65,33 @@ export function RequestForm({ selectedItems, onClose }: RequestFormProps) {
         <form action={formAction} className="p-6 space-y-6">
           {/* Selected Items Summary */}
           <div className="bg-secondary rounded-lg p-4 border border-border">
-            <h3 className="font-semibold text-foreground mb-2">
+            <h3 className="font-semibold text-foreground mb-3">
               Selected Items ({selectedItems.size})
             </h3>
-            <div className="space-y-1">
+            <div className="space-y-4">
               {Array.from(selectedItems.values()).map((item) => (
-                <div key={item.id} className="text-sm text-foreground">
-                  • {item.name}{' '}
-                  <span className="text-muted-foreground">({item.type})</span>
+                <div key={item.id} className="bg-background rounded-md p-3 border border-border">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-medium text-foreground">{item.name}</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                      {item.type}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                  {item.contextItems && item.contextItems.length > 0 && (
+                    <div className="text-sm">
+                      <span className="font-medium text-foreground">
+                        {item.type === 'skill' ? 'Use when:' : 'Handles:'}
+                      </span>
+                      <ul className="mt-1 space-y-0.5">
+                        {item.contextItems.map((contextItem, index) => (
+                          <li key={index} className="text-muted-foreground">
+                            • {contextItem}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

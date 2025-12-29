@@ -9,33 +9,54 @@ flowchart TB
     subgraph frontend [Frontend]
         Hero[Hero Section]
         Catalog[Catalog Grid]
+        SkillPage[Skill Detail Page]
         CustomForm[Custom Request Form]
-        CatalogModal[Catalog Request Modal]
+    end
+
+    subgraph api [API Routes]
+        DownloadAPI["/api/download/[id]"]
     end
 
     subgraph actions [Server Actions]
-        SubmitCatalog[submit-request.ts]
         SubmitCustom[submit-custom-request.ts]
     end
 
     subgraph database [Supabase]
+        Downloads[(skill_downloads table)]
         Requests[(requests table)]
-        RequestItems[(request_items table)]
+    end
+
+    subgraph files [Skill Files]
+        SkillMD[".md files in skills_domain_focus/"]
     end
 
     Hero -->|"Browse Catalog"| Catalog
     Hero -->|"Request Custom"| CustomForm
-    Catalog --> CatalogModal
-    CatalogModal --> SubmitCatalog
+    Catalog -->|"Click Card"| SkillPage
+    SkillPage -->|"Enter Email"| DownloadAPI
+    DownloadAPI --> Downloads
+    DownloadAPI -->|"Strip Frontmatter"| SkillMD
     CustomForm --> SubmitCustom
-    SubmitCatalog --> Requests
-    SubmitCatalog --> RequestItems
     SubmitCustom --> Requests
 ```
 
 ## Database Schema
 
+### skill_downloads table
+
+Tracks all skill file downloads for analytics.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| id | UUID | Primary key |
+| skill_id | TEXT | Skill identifier from catalog |
+| skill_name | TEXT | Human-readable skill name |
+| email | TEXT | Downloader's email |
+| downloaded_at | TIMESTAMP | Auto-generated |
+
 ### requests table
+
+Used for custom skill/agent build requests.
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -54,7 +75,7 @@ flowchart TB
 | tools_used | TEXT | Custom: current tech stack (optional) |
 | team_size | TEXT | Custom: team size (optional) |
 
-### request_items table
+### request_items table (legacy)
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -64,19 +85,22 @@ flowchart TB
 | item_name | TEXT | Name of selected item |
 | created_at | TIMESTAMP | Auto-generated |
 
-## Request Flows
+## User Flows
 
-### Catalog Flow
+### Skill Download Flow
 
 1. User browses catalog grid with search/filter
-2. Selects one or more items
-3. Clicks floating "Request X Items" button
-4. Modal form opens with contact fields
-5. Server action `submit-request.ts` validates and inserts
-6. Creates row in `requests` with `request_type='catalog'`
-7. Creates rows in `request_items` for each selected item
+2. Clicks a skill card to open skill detail page (`/skill/[id]`)
+3. Reads skill description and Claude implementation instructions
+4. Enters email address and clicks "Download Skill"
+5. API route `/api/download/[id]`:
+   - Logs download to `skill_downloads` table
+   - Reads `.md` file from file system
+   - Strips YAML frontmatter for clean Claude import
+   - Returns file as download
+6. User uploads downloaded `.md` file to Claude Project
 
-### Custom Flow
+### Custom Request Flow
 
 1. User clicks "Request AI Agent Build" in hero
 2. Smooth scrolls to custom request section
@@ -87,7 +111,6 @@ flowchart TB
    - Step 4: Name, email, company
 4. Server action `submit-custom-request.ts` validates and inserts
 5. Creates row in `requests` with `request_type='custom'`
-6. No `request_items` created (custom has no predefined items)
 
 ## Component Structure
 
@@ -96,8 +119,15 @@ src/
 ├── app/
 │   ├── page.tsx                 # Main page, orchestrates sections
 │   ├── layout.tsx               # Root layout with metadata
+│   ├── skill/
+│   │   └── [id]/
+│   │       └── page.tsx         # Skill detail page with download
+│   ├── api/
+│   │   └── download/
+│   │       └── [id]/
+│   │           └── route.ts     # Download API, strips frontmatter
 │   └── actions/
-│       ├── submit-request.ts    # Catalog request handler
+│       ├── submit-request.ts    # Catalog request handler (legacy)
 │       └── submit-custom-request.ts  # Custom request handler
 ├── components/
 │   ├── sections/
@@ -106,12 +136,13 @@ src/
 │   ├── ui/
 │   │   └── word-reveal.tsx      # Text animation component
 │   ├── catalog-grid.tsx         # Grid with filters
-│   ├── catalog-card.tsx         # Individual item card
-│   ├── request-form.tsx         # Catalog request modal
+│   ├── catalog-card.tsx         # Clickable card linking to detail
+│   ├── claude-instructions.tsx  # Step-by-step Claude setup guide
+│   ├── download-form.tsx        # Email capture + download trigger
 │   └── particle-animation.tsx   # Background particles
 └── lib/
     ├── catalog/
-    │   ├── skills-agents.ts     # Catalog data
+    │   ├── skills-agents.ts     # Catalog data with file paths
     │   └── types.ts             # TypeScript interfaces
     ├── supabase/
     │   ├── client.ts            # Browser Supabase client
@@ -129,6 +160,35 @@ src/
 - Two CTA buttons with smooth scroll handlers
 - Framer Motion for animations
 
+### Skill Detail Page (`src/app/skill/[id]/page.tsx`)
+
+- Static generation for all skills via `generateStaticParams`
+- Displays skill info, description, and use cases
+- Embeds `ClaudeInstructions` component
+- Embeds `DownloadForm` component
+- Responsive two-column layout
+
+### Claude Instructions (`src/components/claude-instructions.tsx`)
+
+- Step-by-step guide for uploading skills to Claude Projects
+- 4 numbered steps with clear descriptions
+- Pro tip section for combining multiple skills
+
+### Download Form (`src/components/download-form.tsx`)
+
+- Email input with validation
+- Triggers download via `/api/download/[id]`
+- Shows success state after download completes
+- "Download again" option
+
+### Download API (`src/app/api/download/[id]/route.ts`)
+
+- Validates skill ID exists in catalog
+- Logs download to `skill_downloads` table
+- Reads `.md` file from file system
+- Strips YAML frontmatter (content between `---` markers)
+- Returns file with proper download headers
+
 ### Custom Request Section (`src/components/sections/custom-request-section.tsx`)
 
 - 4-step inline form with progressive disclosure
@@ -139,11 +199,6 @@ src/
 - Zod validation via server action
 
 ### Server Actions
-
-**submit-request.ts** (Catalog)
-- Validates: name, email, company_team, use_case, selected items
-- Inserts to `requests` with `request_type='catalog'`
-- Inserts to `request_items` for each selected item
 
 **submit-custom-request.ts** (Custom)
 - Validates: business_category, current_process, pain_points, desired_outcome, name, email, company_team
@@ -170,4 +225,5 @@ Nine categories available for custom requests:
 |------|---------|
 | `001_create_tables.sql` | Creates requests and request_items tables |
 | `002_add_custom_requests.sql` | Adds custom request columns to requests table |
+| `003_add_skill_downloads.sql` | Creates skill_downloads table for tracking |
 
