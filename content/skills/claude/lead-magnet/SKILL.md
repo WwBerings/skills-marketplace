@@ -1,147 +1,126 @@
 ---
-name: lead-magnet
-description: Create opt-in offers people actually want. Use this skill when building email list, creating free offers, designing lead capture, planning giveaways, or wondering why nobody downloads your freebie. Covers hooks that compel opt-ins, format selection, and validation before building. Triggers on lead magnet, freebie, opt-in, email capture, free download, gated content, list building, or email list growth.
+name: lead-magnet-v2
+description: |
+  Create opt-in offers people actually want. Use this skill when:
+  - Building email list
+  - Creating free offers
+  - Designing lead capture
+  - Planning giveaways
+  - Current freebie isn't converting
+  
+  Covers hooks that compel opt-ins, format selection, and validation before building.
+  
+  Triggers: lead magnet, freebie, opt-in, email capture, free download, gated content, list building, email list growth
+  
+  V2 improvements: URL collection for opt-in pages, claim labeling for proof points, receives positioning context.
 ---
 
-# Lead Magnet
+# Lead Magnet V2
 
-Your free thing should do real work. This skill helps you create opt-in offers that attract the right people and make them excited to hear from you.
+Your free thing should do real work. Create opt-in offers that attract the right people.
 
 ## Why Most Lead Magnets Fail
 
-Three reasons:
-1. **Weak hook**: Not compelling enough to trade an email for
-2. **Wrong format**: Doesn't match what the audience actually wants
-3. **No validation**: Built on assumption, not evidence
+1. **Weak hook**: Not compelling enough
+2. **Wrong format**: Doesn't match audience needs
+3. **No validation**: Built on assumption
 
-This skill fixes all three.
+## Required Inputs
 
-## When to Use This Skill
+Before creating opt-in page copy, collect:
 
-- **List Building**: Need to grow email subscribers
-- **Launch Prep**: Building audience for upcoming offer
-- **Funnel Entry**: Creating top-of-funnel asset
-- **Lead Quality**: Current leads aren't converting
-- **Content Upgrade**: Adding opt-ins to existing content
+```
+"Voordat ik de opt-in pagina schrijf, heb ik URLs nodig:
+
+1. Download/thank you pagina: ___
+2. Gerelateerde content/blog: ___
+3. Product/service pagina (voor de 'next step'): ___
+
+Welke URLs kan ik gebruiken?"
+```
 
 ## Core Workflow
 
-### Step 1: Define the Target Subscriber
+### Step 1: Define Target Subscriber
 
-Before creating anything, get specific about who you're attracting.
-
-**Questions to answer:**
-- Who is the ideal person to have on your list?
-- What problem are they actively trying to solve?
-- What do they believe about solutions to that problem?
-- What have they already tried that didn't work?
+Questions to answer:
+- Who is the ideal person for your list?
+- What problem are they actively solving?
+- What have they already tried?
 - What would make them immediately interested?
-
-**Warning signs of wrong targeting:**
-- "Everyone" could use this
-- No clear connection to your paid offer
-- Attracts browsers, not buyers
 
 ### Step 2: Surface the Hook
 
-The hook is why someone trades their email. It must be:
-- **Specific**: Solves a particular problem
+Hook must be:
+- **Specific**: Solves particular problem
 - **Immediate**: Delivers value quickly
 - **Desirable**: Something they actually want
-- **Credible**: Believable that you can deliver
+- **Credible**: Believable you can deliver
 
-See `references/hooks.md` for hook formulas and examples.
+See `references/hooks.md` for formulas.
 
 **Hook Types:**
-
-1. **Speed Hook**: Get [result] in [short time]
-2. **Ease Hook**: The simple way to [desired outcome]
-3. **Secret Hook**: The [hidden method] for [result]
-4. **Mistake Hook**: Avoid these [X] costly errors
-5. **Checklist Hook**: Everything you need to [achieve goal]
-6. **Template Hook**: Copy my [proven template] for [result]
-7. **Case Study Hook**: How [person] achieved [specific result]
-8. **Tool Hook**: The [free tool] that [delivers benefit]
+1. Speed Hook: Get [result] in [short time]
+2. Ease Hook: The simple way to [outcome]
+3. Secret Hook: The [hidden method] for [result]
+4. Mistake Hook: Avoid these [X] costly errors
+5. Template Hook: Copy my [template] for [result]
+6. Checklist Hook: Everything you need to [goal]
 
 ### Step 3: Select Format
 
-Match format to hook and audience. Not every lead magnet needs to be an ebook.
+See `references/formats.md` for details.
 
-See `references/formats.md` for format details.
-
-**Quick Format Selection:**
-
-| If they need... | Use this format |
-|-----------------|-----------------|
-| To learn a process | Checklist or Guide |
-| To save time | Template or Swipe File |
-| To make decisions | Calculator or Assessment |
-| To understand concepts | Video or Mini-Course |
+| If they need... | Use format... |
+|-----------------|---------------|
+| Learn a process | Checklist or Guide |
+| Save time | Template or Swipe File |
+| Make decisions | Calculator or Assessment |
+| Understand concepts | Video or Mini-Course |
 | Quick reference | Cheat Sheet |
-| Ongoing help | Tool or Resource Library |
-
-**Format Effort Matrix:**
-
-| Format | Creation Time | Perceived Value | Best For |
-|--------|---------------|-----------------|----------|
-| Checklist | 2-4 hours | Medium | Process-oriented people |
-| Template | 4-8 hours | High | DIYers who want shortcuts |
-| Guide/Ebook | 8-20 hours | Medium-High | Comprehensive solutions |
-| Calculator | 8-16 hours | Very High | Data-driven decisions |
-| Mini-Course | 10-30 hours | Very High | Complex topics |
-| Cheat Sheet | 1-2 hours | Medium | Quick reference needs |
-| Swipe File | 4-8 hours | High | Creative inspiration |
-| Assessment | 8-20 hours | Very High | Self-discovery |
 
 ### Step 4: Validate Before Building
 
 Don't spend 20 hours on something nobody wants.
 
 **Validation Methods:**
+- Audience poll
+- Content performance data
+- Search data
+- Competitor analysis
+- Minimum viable test
 
-1. **Audience Poll**: Ask directly what they'd find most useful
-2. **Content Performance**: Which blog posts get most engagement?
-3. **Search Data**: Are people searching for this topic?
-4. **Competitor Analysis**: What opt-ins are working for others?
-5. **Minimum Viable Test**: Create a simple version, measure signups
+### Step 5: Create Lead Magnet
 
-**Validation Questions:**
-- Would you pay $20 for this? (If no, is it compelling enough for an email?)
-- Does this solve an urgent problem?
-- Can you explain the benefit in one sentence?
-- Is this better than what's freely available?
+**Structure:**
+1. Immediate value first
+2. Quick wins early
+3. Clear next steps
+4. Natural bridge to offer
 
-See `references/validation.md` for the full validation process.
+### Step 6: Write Opt-in Page
 
-### Step 5: Create the Lead Magnet
+**Elements:**
+- Headline: The hook, crystallized
+- Subhead: What they'll get/achieve
+- Bullet points: 3-5 specific benefits
+- Social proof: downloads, testimonials [with claim labels]
+- Simple form: Email only
+- CTA button: Action-oriented (not "Submit")
 
-**Structure for Success:**
+## Claim Labeling (B2B Requirement)
 
-1. **Immediate Value First**: Don't bury the good stuff
-2. **Quick Wins Early**: Give them a win in the first section
-3. **Clear Next Steps**: What should they do after consuming?
-4. **Natural Bridge to Offer**: Connect to your paid solution (softly)
+Label proof points on opt-in page:
 
-**Design Principles:**
-- Professional but not over-designed
-- Easy to consume (scannable)
-- Branded but not salesy
-- Works on mobile
+- `[BRON: {source}]` - Verified stat or testimonial
+- `[SCHATTING]` - Estimated number
+- `[VERIFICATIE NODIG]` - Needs verification
 
-### Step 6: Write the Opt-in Page
-
-The page needs to sell the free thing. Key elements:
-
-**Headline**: The hook, crystallized
-**Subhead**: What they'll get/learn/achieve
-**Bullet points**: 3-5 specific benefits or contents
-**Social proof**: (if available) downloads, testimonials
-**Simple form**: Email only (reduce friction)
-**CTA button**: Action-oriented text, not "Submit"
+**Examples:**
+- "500+ downloads [SCHATTING]"
+- "Gemiddeld 3 uur tijdsbesparing [BRON: gebruikersonderzoek]"
 
 ## Output Format
-
-When creating a lead magnet plan, deliver:
 
 ```
 ## Lead Magnet Plan: [Name]
@@ -151,9 +130,11 @@ When creating a lead magnet plan, deliver:
 
 ### The Hook
 [One sentence that makes someone want this]
+Hook type: [Speed/Ease/Secret/etc.]
 
 ### Format
 [Chosen format and why it fits]
+Creation time estimate: [hours]
 
 ### Validation
 [How this was/should be validated]
@@ -161,38 +142,41 @@ When creating a lead magnet plan, deliver:
 ### Outline
 [What the lead magnet will contain]
 
+### URLs Collected
+- Thank you page: [URL]
+- Related content: [URL]
+- Product page: [URL]
+
 ### Opt-in Page Copy
-- Headline: [Text]
-- Subhead: [Text]
-- Bullets: [3-5 benefits]
-- CTA: [Button text]
+
+**Headline:** [Text]
+**Subhead:** [Text]
+
+**Bullets:**
+- [Benefit 1]
+- [Benefit 2]
+- [Benefit 3]
+
+**Social Proof:** [If available, with claim labels]
+
+**CTA Button:** [Text] → [thank you page URL]
 
 ### Connection to Offer
-[How this leads naturally to paid product/service]
+[How this leads to paid product/service]
 
 ### Success Metrics
-[How to measure if it's working]
+- Conversion rate target: [%]
+- Quality indicator: [what shows right people are signing up]
+
+### Claims to Verify
+[List any [VERIFICATIE NODIG] items]
 ```
 
-## Integration with Other Skills
+## Integration
 
 Lead magnets connect to:
-- **positioning-angle**: Use positioning to inform the hook
-- **direct-response-copy**: Copy skills apply to opt-in page
-- **email-sequences**: Lead magnet triggers welcome sequence
-- **keyword-research**: SEO topics suggest magnet ideas
-
-## Common Mistakes
-
-1. **Generic topic**: "Ultimate Guide to Marketing" (yawn)
-2. **Too comprehensive**: 50-page ebooks nobody reads
-3. **No hook in title**: Needs to promise something specific
-4. **Disconnected from offer**: Attracts wrong audience
-5. **Over-designed**: Spending 40 hours on design for a checklist
-6. **No delivery sequence**: Email arrives, then silence
-
-
-
-
-
+- **positioning-angle-v2**: Use positioning for hook
+- **direct-response-copy-v2**: Copy principles for opt-in page
+- **email-sequences-v2**: Magnet triggers welcome sequence
+- **keyword-research-v2**: SEO topics suggest magnet ideas
 

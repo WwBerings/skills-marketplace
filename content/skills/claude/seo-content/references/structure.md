@@ -279,6 +279,48 @@ Conclusion: Summary + resources
 - Support/illustrate points
 - Featured image matches topic
 
+---
+
+## E-E-A-T Signals by Section
+
+Integrate E-E-A-T signals throughout your content structure:
+
+### Introduction
+- **Experience**: Open with personal hook or specific outcome you achieved
+  - Example: "When I reduced our cart abandonment by 34% in Q2 2024..."
+- **Trust**: Set clear expectations about what readers will learn
+  - Example: "By the end of this guide, you'll know exactly how to implement..."
+
+### Body Sections
+- **Expertise**: Explain "why" behind each recommendation, not just "what"
+  - Don't just say "use short subject lines"
+  - Explain: "Subject lines under 40 chars avoid mobile truncation..."
+- **Experience**: Include specific examples with data throughout
+  - Real numbers: "18% → 31% open rate" not "significantly improved"
+  - Timelines: "Q3 2024" not "recently"
+  - Context: "B2B SaaS, 5K subscribers" not "a client"
+- **Authority**: Cite credible sources with [BRON] labels
+  - Studies: [BRON: Litmus 2024 Email Report]
+  - Your data: [BRON: eigen ConvertKit analytics]
+  - Estimates: [SCHATTING] when no hard data available
+
+### Conclusion
+- **Trust**: Acknowledge limitations or edge cases
+  - "This approach works for B2B lists under 15K. I haven't tested B2C e-commerce..."
+- **Authority**: Include author bio with credentials (if not in header)
+  - Brief credential statement
+  - Link to relevant prior work or case studies
+
+### Throughout Content
+- **Label all claims**: [BRON: source], [SCHATTING], [VERIFICATIE NODIG]
+- **Share failures**: What didn't work teaches as much as what did
+- **Address edge cases**: When does your advice NOT apply?
+- **Vary structure**: Avoid robotic predictability (see authenticity-examples.md)
+
+**Target E-E-A-T Score**: 12+/16 for competitive niches (use checklist in main SKILL.md)
+
+See `humanizing.md` for detailed E-E-A-T integration guide and `authenticity-examples.md` for before/after transformations.
+
 
 
 

@@ -3,7 +3,8 @@
 import { useState, useMemo } from 'react'
 import { CatalogItem } from '@/lib/catalog/types'
 import { CatalogCard } from './catalog-card'
-import { Search, Filter } from 'lucide-react'
+import { DownloadAllModal } from './download-all-modal'
+import { Search, Filter, Download } from 'lucide-react'
 
 interface CatalogGridProps {
   items: CatalogItem[]
@@ -13,6 +14,12 @@ export function CatalogGrid({ items }: CatalogGridProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState<'all' | 'skill' | 'agent'>('all')
   const [filterCategory, setFilterCategory] = useState<string>('all')
+  const [isDownloadAllOpen, setIsDownloadAllOpen] = useState(false)
+
+  // Count total skills (for download all)
+  const totalSkillCount = useMemo(() => {
+    return items.filter((item) => item.type === 'skill').length
+  }, [items])
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -115,6 +122,15 @@ export function CatalogGrid({ items }: CatalogGridProps) {
             ))}
           </select>
         </div>
+
+        {/* Download All Skills Button */}
+        <button
+          onClick={() => setIsDownloadAllOpen(true)}
+          className="px-4 py-2 rounded-lg font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 flex items-center gap-2 whitespace-nowrap"
+        >
+          <Download className="h-4 w-4" />
+          Download All Skills
+        </button>
       </div>
 
       {/* Results count */}
@@ -145,6 +161,13 @@ export function CatalogGrid({ items }: CatalogGridProps) {
           </button>
         </div>
       )}
+
+      {/* Download All Modal */}
+      <DownloadAllModal
+        isOpen={isDownloadAllOpen}
+        onClose={() => setIsDownloadAllOpen(false)}
+        skillCount={totalSkillCount}
+      />
     </div>
   )
 }

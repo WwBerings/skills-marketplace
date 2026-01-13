@@ -171,6 +171,225 @@ Phrases that scream "AI wrote this":
 
 ---
 
+## E-E-A-T: Building Credibility Into Content
+
+Google's E-E-A-T framework evaluates content quality. Here's how to integrate it:
+
+### Experience: First-Hand Demonstrable Interaction
+
+**What it means:**
+Did you personally use the tool/method/product? Can you share specific outcomes?
+
+**How to demonstrate:**
+❌ Generic: "Email marketing is effective for lead nurturing"
+✅ Experience: "When I switched to ConvertKit, open rates jumped from 18% to 31% over 3 months [BRON: eigen data Q2 2024]. The automation builder made the difference."
+
+**Checklist:**
+- Include specific numbers (before/after, percentages, absolute values)
+- Add timeline (when did this happen?)
+- Name actual tools/companies (not "an email platform")
+- Share context (company size, industry, constraints)
+- Label source: [BRON: eigen experiment 2024]
+
+### Expertise: Depth Beyond Basics
+
+**What it means:**
+Can you explain WHY something works? Do you understand edge cases?
+
+**How to demonstrate:**
+❌ Generic: "Subject lines should be short"
+✅ Expertise: "Subject lines under 40 chars perform better on mobile (60%+ of opens) because they don't truncate. But in B2B cold outreach, longer subject lines (50-60 chars) actually increase opens by 23% [BRON: HubSpot 2024 study] because they pre-qualify intent. Know your context."
+
+**Checklist:**
+- Explain underlying principles (the "why")
+- Address exceptions ("this doesn't work when...")
+- Compare approaches with trade-offs
+- Cite authoritative sources [BRON: source]
+
+### Authority: External Validation
+
+**What it means:**
+Do credible sources validate your expertise? Can you reference authoritative work?
+
+**How to demonstrate:**
+❌ Generic: "Experts recommend A/B testing subject lines"
+✅ Authority: "According to Litmus's 2024 State of Email report, brands that A/B test subject lines see 37% higher engagement [BRON: Litmus 2024]. We've replicated these results across 12 client campaigns."
+
+**Checklist:**
+- Reference credible sources (research, studies, expert opinions)
+- Include author bio with credentials
+- Link to previous published work
+- Show third-party validation (testimonials, media mentions)
+
+### Trust: Accuracy and Transparency
+
+**What it means:**
+Are your claims accurate? Do you acknowledge what you don't know?
+
+**How to demonstrate:**
+❌ Generic: "Open rates typically improve significantly"
+✅ Trust: "Open rates increased 23% [BRON: client case study, 2024]. This was for B2B SaaS lists (5K-15K subscribers). I haven't tested this approach with B2C e-commerce or lists under 1K [SCHATTING - may work differently]."
+
+**Checklist:**
+- Label ALL claims: [BRON: source], [SCHATTING], [VERIFICATIE NODIG]
+- Acknowledge limitations ("I haven't tested X scenario")
+- Be transparent about conflicts (affiliate links, sponsorships)
+- Include clear author/contact information
+
+---
+
+### E-E-A-T in Practice: Scoring Your Content
+
+Use the 16-point checklist from the main skill output format.
+
+**When to strengthen each pillar:**
+
+**Low Experience (0-2 points)?**
+→ Add: Personal example with specific data, timeline, and outcome
+
+**Low Expertise (0-2 points)?**
+→ Add: Underlying principles, edge cases, comparison of approaches
+
+**Low Authority (0-2 points)?**
+→ Add: Authoritative source citations, author bio, third-party validation
+
+**Low Trust (0-2 points)?**
+→ Add: Claim labels, acknowledge what you don't know, clear contact info
+
+---
+
+## Authenticity Patterns: Examples Over Rules
+
+Avoid robotic content with these before/after transformations.
+
+### Pattern 1: List Overuse
+
+**Robotic Content:**
+```
+Benefits of email marketing:
+- Cost-effective communication
+- Direct access to customers
+- Measurable results
+- Automation capabilities
+- Personalization options
+- Scalable approach
+- High ROI potential
+- Builds relationships
+- Drives conversions
+- Nurtures leads
+```
+
+**Authentic Content:**
+```
+Email marketing is cost-effective, sure. But that's not why I use it.
+
+The real value: it's the only channel I fully control. When Instagram changed their algorithm in 2023, my reach dropped 67% overnight [BRON: eigen analytics]. My email list? Still there, still opening at 28%.
+
+Three things make it work:
+- Sending consistently (2x/week for my B2B audience)
+- Segmenting by behavior, not demographics
+- Writing like I'm talking to one person, not a list
+
+The hard part isn't the technology. It's resisting the urge to pitch in every email.
+```
+
+**Why this works:**
+- Lists reduced from 10 to 1 (the "three things")
+- Personal experience with data (67% drop, 28% opens)
+- Conversational tone ("sure", "that's not why")
+- Specific context (B2B, 2x/week)
+- Opinion/perspective ("The hard part...")
+
+### Pattern 2: Generic Examples → Concrete Details
+
+**Robotic:**
+```
+For example, a company might use segmentation to improve their email performance and see better results over time.
+```
+
+**Authentic:**
+```
+When we segmented our 12K list into three groups (free users, course buyers, agency clients), revenue per email jumped from $280 to $640 [BRON: ConvertKit reports, Q2 vs Q3 2024]. The insight: stop pitching $5K agency services to people who downloaded a free checklist.
+```
+
+**Why this works:**
+- Specific numbers (12K list, $280→$640)
+- Timeline (Q2 vs Q3 2024)
+- Source label [BRON: ConvertKit reports]
+- Context (3 segments, what each represents)
+- Insight (why it worked)
+
+### Pattern 3: Paragraph Variation
+
+**Robotic (all 2-3 sentences):**
+```
+Email segmentation improves engagement. It allows you to send targeted content to specific groups. This results in higher open rates and click-through rates.
+
+To implement segmentation, first identify your criteria. Common criteria include behavior, demographics, and purchase history. Choose what makes sense for your business.
+
+After segmenting, create targeted campaigns. Write content specific to each segment. Monitor performance and optimize based on results.
+```
+
+**Authentic (varied structure):**
+```
+Email segmentation sounds complicated.
+
+It's not. At its core, you're just asking: "Should everyone on my list get the same message?" Usually, the answer is no. Someone who bought your product needs different emails than someone who just signed up for a free guide.
+
+I resisted segmentation for two years. My list was "only" 1,000 people—did it matter? When I finally split into three segments (free users, course buyers, agency clients), revenue per email more than doubled [BRON: eigen ConvertKit data].
+
+Here's the stupidly simple approach: tag by behavior, not demographics. Forget "age" or "industry." Tag based on what people do: downloaded X, opened emails about Y, purchased Z. Then write for one segment at a time.
+
+The mistake I made first: creating too many segments. Started with 12, couldn't manage it. Collapsed to 3 segments, suddenly manageable.
+```
+
+**Why this works:**
+- Varied paragraph lengths (1 sentence → 2 sentences → 3 sentences → 5 sentences → 2 sentences)
+- Personal experience ("I resisted for two years")
+- Specific failure shared ("too many segments")
+- Conversational transitions ("It's not.", "Here's the...")
+- Data point with source
+
+### Pattern 4: Failure Inclusion
+
+**Robotic:**
+```
+Follow these best practices for email timing:
+1. Test different send times
+2. Analyze your audience's behavior
+3. Optimize based on results
+```
+
+**Authentic:**
+```
+Email timing matters, but not how you think.
+
+I spent three months A/B testing send times. Tuesday 10am vs Thursday 2pm vs Saturday 8am. Obsessed over open rates. Result? 2% variance [BRON: eigen tests 2023].
+
+Know what made a 40% difference? Writing subject lines that don't suck. I'd been optimizing the wrong variable.
+
+That said, avoid Sunday evenings for B2B (open rates crater). And if your audience is global, timezone matters more than day-of-week [VERIFICATIE NODIG - no data yet, based on observation only].
+```
+
+**Why this works:**
+- Shared what didn't work ("spent three months...2% variance")
+- Acknowledged what actually mattered ("wrong variable")
+- Provided nuance (B2B Sunday evenings, global audiences)
+- Labeled uncertainty [VERIFICATIE NODIG]
+
+---
+
+### Guidelines Not Rules
+
+These patterns are **examples**, not enforcement:
+- Don't count lists obsessively - ask "does this structure serve the reader?"
+- Don't force 5:1 ratios - ask "is this example concrete enough?"
+- Don't follow formulas - ask "would I say this out loud?"
+
+The goal: content that **sounds like a person wrote it, not an algorithm**.
+
+---
+
 ## The Humanization Process
 
 ### Before Writing

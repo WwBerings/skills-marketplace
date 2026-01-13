@@ -1,167 +1,111 @@
 ---
-name: keyword-research
-description: Content planning without expensive tools using the 6 Circles Method. Use this skill when deciding what to write about, prioritizing content topics, finding SEO opportunities, planning a content calendar, or identifying what your audience is searching for. Teaches keyword research methodology that finds topics and prioritizes them—no paid tools required. Triggers on keyword research, content planning, what to write about, SEO topics, content ideas, topic prioritization, or search intent.
+name: keyword-research-v2
+description: |
+  Content planning without expensive tools using the 6 Circles Method. Use this skill when:
+  - Deciding what to write about
+  - Prioritizing content topics
+  - Finding SEO opportunities
+  - Planning a content calendar
+  - Identifying what your audience is searching for
+  
+  Triggers: keyword research, content planning, what to write about, SEO topics, content ideas, topic prioritization, search intent, blog ideas
+  
+  V2 improvements: Clear score interpretation with tiers, auto-handoff to seo-content-v2, claim labeling for estimates, full score breakdown in output.
 ---
 
-# Keyword Research
+# Keyword Research V2
 
 The 6 Circles Method for finding what to write about—and knowing which topics deserve your time first.
-
-## Why This Matters
-
-Most people skip keyword research because:
-- Tools are expensive
-- The process feels overwhelming
-- They don't know what to do with the data
-
-This skill gives you a methodology that works with free tools and produces prioritized topic lists you can actually execute.
-
-## When to Use This Skill
-
-- **Content Planning**: Building a content calendar from scratch
-- **Topic Validation**: Checking if an idea is worth pursuing
-- **Gap Analysis**: Finding topics competitors miss
-- **Opportunity Hunting**: Looking for low-competition wins
-- **Quarterly Planning**: Refreshing your content strategy
-
-## The 6 Circles Method
-
-Six overlapping circles create your topic universe. The sweet spot is where multiple circles overlap.
-
-```
-    [Expertise]     [Audience Pain]     [Search Volume]
-         \              |               /
-          \             |              /
-           \            |             /
-            [   SWEET   SPOT   ]
-           /            |             \
-          /             |              \
-         /              |               \
-    [Competition]   [Business Value]   [Content Gap]
-```
-
-See `references/6-circles.md` for the complete methodology.
 
 ## Core Workflow
 
 ### Step 1: Define the Circles
 
-**Circle 1 - Expertise**: What do you know deeply?
-- Topics you can speak on without research
-- Areas where you have unique experience
-- Subjects where you have strong opinions
+See `references/6-circles.md` for complete methodology.
 
-**Circle 2 - Audience Pain**: What keeps them up at night?
-- Problems they're actively trying to solve
-- Questions they're asking in communities
-- Frustrations with current solutions
-
-**Circle 3 - Search Volume**: Are people actually searching?
-- Use free tools to estimate demand
-- Look for consistent search interest
-- Balance volume with specificity
-
-**Circle 4 - Competition**: Can you rank?
-- Who's currently ranking for this?
-- What's the quality of existing content?
-- Where are there gaps or weaknesses?
-
-**Circle 5 - Business Value**: Does this lead to revenue?
-- How close is this to purchase intent?
-- Can you naturally mention your offer?
-- Does it attract your ideal customer?
-
-**Circle 6 - Content Gap**: Is there room for your take?
-- What angle isn't being covered?
-- What's outdated in existing content?
-- What can you add that others can't?
+**The Six Circles:**
+1. **Expertise** - What you know deeply
+2. **Audience Pain** - What keeps them up at night
+3. **Search Volume** - Are people actually searching?
+4. **Competition** - Can you rank?
+5. **Business Value** - Does this lead to revenue?
+6. **Content Gap** - Is there room for your take?
 
 ### Step 2: Generate Topic Seeds
 
-Start with three seed sources:
-
-**Source 1: Your Brain**
-- What questions do customers ask?
-- What do you find yourself explaining repeatedly?
-- What would you write if SEO didn't exist?
-
-**Source 2: Audience Research**
-- Reddit threads in your space
-- Twitter/LinkedIn discussions
-- Customer support tickets
-- Sales call notes
-
-**Source 3: Competitor Content**
-- What's their most-shared content?
-- What topics do they keep returning to?
-- What are they NOT covering?
+Three sources:
+1. **Your Brain** - Questions customers ask
+2. **Audience Research** - Reddit, Twitter, support tickets
+3. **Competitor Content** - What they write about (and don't)
 
 ### Step 3: Expand Keywords (Free Tools)
 
-For each seed topic, expand using:
-
-**Google Autocomplete**
-- Type seed + letter (a, b, c...) 
-- Note suggested completions
-- These are real searches
-
-**People Also Ask**
-- Search your seed topic
-- Capture all PAA questions
-- Click to expand more
-
-**Google Related Searches**
-- Bottom of search results
-- Shows connected topics
-- Often reveals angles
-
-**AnswerThePublic** (limited free)
-- Visual keyword expansion
-- Question-based queries
-- Preposition variations
-
-**AlsoAsked** (limited free)
-- PAA question trees
-- Shows question relationships
-- Great for content clusters
+- Google Autocomplete
+- People Also Ask
+- Related Searches
+- AnswerThePublic (limited free)
+- AlsoAsked (limited free)
 
 ### Step 4: Score Each Topic
 
-Rate each topic 1-3 on all six circles:
+Rate each topic 1-3 on all six circles.
 
-| Topic | Expertise | Pain | Volume | Competition | Value | Gap | TOTAL |
-|-------|-----------|------|--------|-------------|-------|-----|-------|
-| Topic A | 3 | 3 | 2 | 2 | 3 | 2 | 15 |
-| Topic B | 2 | 3 | 3 | 1 | 2 | 2 | 13 |
+## 6 Circles Scoring
 
-**Scoring Guide:**
-- 3 = Strong (definitely yes)
-- 2 = Moderate (somewhat)
-- 1 = Weak (barely)
+### Score Interpretation
 
-### Step 5: Prioritize for Execution
+| Score | Rating | Action |
+|-------|--------|--------|
+| 15-18 | **Excellent** | Priority 1 - execute immediately |
+| 12-14 | **Good** | Include in content calendar |
+| 9-11 | **Moderate** | Only if capacity allows |
+| <9 | **Skip** | Time better spent elsewhere |
 
-Sort by total score, then apply filters:
+### Output Format (Required)
 
-**Quick Wins First** (high score + low competition)
-- Can rank faster
-- Build momentum
-- Prove the process
+Always show full breakdown with toelichting:
 
-**Pillar Content** (high score + high volume)
-- Takes longer to rank
-- Worth the investment
-- Supports clusters
+```
+## Topic: [Topic Name]
 
-**Skip For Now** (low business value regardless of volume)
-- Traffic without revenue
-- Time better spent elsewhere
+| Criterium | Score | Toelichting |
+|-----------|-------|-------------|
+| Expertise | X/3 | [reason] |
+| Pain | X/3 | [reason] |
+| Volume | X/3 | [reason] [SCHATTING - geen echte data] |
+| Competition | X/3 | [reason] [SCHATTING - geen SERP analyse] |
+| Value | X/3 | [reason] |
+| Gap | X/3 | [reason] |
+| **TOTAL** | **X/18** | **[Rating: Excellent/Good/Moderate/Skip]** |
+```
 
-See `references/prioritization.md` for the prioritization framework.
+### Claim Labeling (B2B Requirement)
+
+Mark estimates clearly:
+- Volume scores: Always add `[SCHATTING]` unless actual data provided
+- Competition scores: Always add `[SCHATTING]` unless SERP analysis done
+- Pain/Expertise/Value/Gap: Based on provided context, no label needed
+
+## Handoff to SEO-Content
+
+After generating blog topics, offer to continue:
+
+```
+"Ik heb [X] blog topics gevonden. Wil je dat ik er één uitwerk als volledige blog?
+
+**Aanbevolen om te starten:**
+[Topic met hoogste score]
+- Keyword: [keyword]
+- Search intent: [type]
+- Score: [X/18] - [Rating]
+- Unique angle: [angle]
+
+Zeg 'ja' of kies een ander topic uit de lijst."
+```
+
+On confirmation → Route to seo-content-v2 with context from `references/handoff-templates.md`
 
 ## Output Format
-
-After running the 6 Circles analysis, deliver:
 
 ```
 ## Keyword Research: [Topic Area]
@@ -171,17 +115,19 @@ After running the 6 Circles analysis, deliver:
 
 ### Top Opportunities (Prioritized)
 
-**Tier 1: Quick Wins** (target first)
-| Topic | Score | Est. Volume | Competition | Notes |
-|-------|-------|-------------|-------------|-------|
-| [Topic] | [X/18] | [range] | [low/med] | [angle] |
+**Tier 1: Quick Wins** (execute first)
+
+| Topic | Score | Rating | Volume | Competition | Angle |
+|-------|-------|--------|--------|-------------|-------|
+| [Topic] | X/18 | [rating] | [est.] | [low/med] | [unique take] |
+
+[Full score breakdown for each topic]
 
 **Tier 2: Strategic Plays** (worth investment)
-| Topic | Score | Est. Volume | Competition | Notes |
-|-------|-------|-------------|-------------|-------|
+[Same format]
 
 **Tier 3: Consider Later**
-[Topics that score well but have timing/resource constraints]
+[Topics that score well but have constraints]
 
 ### Recommended Content Plan
 - Month 1: [Quick wins to target]
@@ -190,26 +136,19 @@ After running the 6 Circles analysis, deliver:
 
 ### Topics to Skip
 [What scored low and why]
+
+---
+
+**Handoff aanbod:** Wil je dat ik een van deze topics uitwerk naar een volledige blog?
 ```
 
-## Integration with Other Skills
+## Integration
 
 Keyword research feeds into:
-- **seo-content**: Keywords become content briefs
-- **newsletter**: Topics inform newsletter themes
-- **content-repurposer**: Keyword data guides platform focus
-- **lead-magnet**: High-intent keywords suggest magnet topics
+- **seo-content-v2** - Keywords become content briefs (auto-handoff available)
+- **newsletter-v2** - Topics inform newsletter themes
+- **content-repurposer-v2** - Keyword data guides platform focus
+- **lead-magnet-v2** - High-intent keywords suggest magnet topics
 
-## Common Mistakes
-
-1. **Chasing volume only**: High traffic ≠ right traffic
-2. **Ignoring competition**: Can't rank = waste of effort
-3. **Skipping business value**: Traffic without revenue intent
-4. **Analysis paralysis**: Research endlessly, write nothing
-5. **One-time exercise**: Should revisit quarterly
-
-
-
-
-
+See `references/prioritization.md` for detailed prioritization framework.
 
