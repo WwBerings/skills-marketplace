@@ -37,14 +37,16 @@ export function LogoCarouselSection() {
   return (
     <section className="max-w-[1320px] mx-auto px-6 mb-12 pt-16 md:pt-24">
       <div className="text-center space-y-4 mb-8">
-        <p className="text-xs font-medium tracking-widest text-white/60 uppercase">
+        <p className="text-xs font-medium tracking-widest text-[#523BE1] uppercase">
           Stop accepting mediocre AI output
         </p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-none text-white">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-none text-[#2D2D2D]">
           Get the pre-built skills that actually work
         </h2>
       </div>
-      <LogoCarousel logos={logos} columns={5} />
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-[#B4BBC4]">
+        <LogoCarousel logos={logos} columns={5} />
+      </div>
     </section>
   );
 }

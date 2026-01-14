@@ -68,3 +68,4 @@ CREATE POLICY "Allow authenticated update on requests"
   USING (true)
   WITH CHECK (true);
 
+

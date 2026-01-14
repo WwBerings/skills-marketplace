@@ -1,23 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --card: #171717;
-  --card-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #0a0a0a;
-  --secondary: #262626;
-  --secondary-foreground: #fafafa;
-  --muted: #262626;
-  --muted-foreground: #a3a3a3;
-  --accent: #262626;
-  --accent-foreground: #fafafa;
+  /* Pro4all Brand Colors */
+  --pro4all-purple: #523BE1;
+  --pro4all-green: #37CCBA;
+  --pro4all-silver: #E4EAF2;
+  --pro4all-orange: #E25313;
+  --pro4all-purple-dark: #28237a;
+  --pro4all-green-dark: #05847B;
+  --pro4all-silver-dark: #B4BBC4;
+  --pro4all-text-dark: #2D2D2D;
+  
+  /* Fonts */
+  --font-heading: 'Arial Black', Arial, sans-serif;
+  --font-body: 'Open Sans', Arial, sans-serif;
+  
+  /* Theme Variables */
+  --background: #E4EAF2;
+  --foreground: #2D2D2D;
+  --card: #FFFFFF;
+  --card-foreground: #2D2D2D;
+  --primary: #523BE1;
+  --primary-foreground: #FFFFFF;
+  --secondary: #37CCBA;
+  --secondary-foreground: #2D2D2D;
+  --muted: #E4EAF2;
+  --muted-foreground: #6B7280;
+  --accent: #E25313;
+  --accent-foreground: #FFFFFF;
   --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
-  --border: #262626;
-  --input: #262626;
-  --ring: #fafafa;
+  --destructive-foreground: #FFFFFF;
+  --border: #B4BBC4;
+  --input: #FFFFFF;
+  --ring: #523BE1;
   --radius: 0.5rem;
 }
 
@@ -39,10 +54,31 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  
+  /* Pro4all specific colors for Tailwind */
+  --color-pro4all-purple: var(--pro4all-purple);
+  --color-pro4all-green: var(--pro4all-green);
+  --color-pro4all-silver: var(--pro4all-silver);
+  --color-pro4all-orange: var(--pro4all-orange);
+  --color-pro4all-purple-dark: var(--pro4all-purple-dark);
+  --color-pro4all-green-dark: var(--pro4all-green-dark);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-body);
   font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
 }

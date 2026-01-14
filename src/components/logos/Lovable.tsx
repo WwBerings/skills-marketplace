@@ -37,3 +37,4 @@ export function LovableLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+

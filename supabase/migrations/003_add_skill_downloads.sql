@@ -28,3 +28,4 @@ CREATE POLICY "Service role has full access" ON skill_downloads
   USING (true)
   WITH CHECK (true);
 
+

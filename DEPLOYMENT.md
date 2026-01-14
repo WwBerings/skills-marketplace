@@ -159,3 +159,4 @@ GROUP BY business_category
 ORDER BY COUNT(*) DESC;
 ```
 
+

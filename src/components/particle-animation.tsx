@@ -115,8 +115,8 @@ export function ParticleAnimation() {
             baseX: x,
             baseY: y,
             size: Math.random() * 1.5 + 0.5,
-            color: 'rgb(150, 220, 255)', // Light blue
-            scatteredColor: 'rgb(100, 200, 255)', // Cyan blue
+            color: 'rgb(55, 204, 186)', // Pro4all Green
+            scatteredColor: 'rgb(226, 83, 19)', // Pro4all Orange
             life: Math.random() * 100 + 50
           }
         }

@@ -278,3 +278,4 @@ Visual documentation of the Skills & Agents Marketplace user interface.
 - Text: White (headings), gray (body)
 - Particles: Light blue, 30% opacity
 
+

@@ -30,3 +30,4 @@ COMMENT ON COLUMN requests.timeline IS 'When the user needs the solution (custom
 -- The anon insert policy allows both catalog and custom requests
 -- The authenticated read/update policies work for both types
 
+

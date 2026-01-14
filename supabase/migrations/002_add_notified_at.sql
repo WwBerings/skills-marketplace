@@ -9,3 +9,4 @@ CREATE INDEX idx_requests_notified_at ON requests(notified_at);
 -- Add comment for documentation
 COMMENT ON COLUMN requests.notified_at IS 'Timestamp when admin was notified about this request via n8n workflow';
 
+

@@ -27,3 +27,4 @@ CREATE POLICY "Service role full access" ON waitlist_subscribers
   USING (true)
   WITH CHECK (true);
 
+

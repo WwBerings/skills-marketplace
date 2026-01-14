@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
-import { Lato } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 
-const lato = Lato({ 
+const openSans = Open_Sans({ 
   subsets: ['latin'],
-  weight: ['100', '300', '400', '700', '900']
+  weight: ['400', '600', '700'],
+  variable: '--font-open-sans',
 })
 
 export const metadata: Metadata = {
-  title: 'Skills & Agents Marketplace | Marketing Tools Library',
+  title: 'Pro4all Skills Marketplace | AI Agents & Marketing Tools',
   description: 'Access powerful marketing skills and AI agents to supercharge your work. Browse our library of 10 marketing skills and 3 AI agents.',
-  keywords: 'marketing skills, AI agents, marketing automation, content creation, SEO',
+  keywords: 'Pro4all, marketing skills, AI agents, marketing automation, content creation, SEO',
 }
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.className}>{children}</body>
+      <body className={openSans.className}>{children}</body>
     </html>
   )
 }

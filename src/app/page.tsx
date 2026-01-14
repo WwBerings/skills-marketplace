@@ -24,48 +24,27 @@ export default function Home() {
         onRequestCustom={() => scrollToSection('custom-request')}
       />
 
-      {/* Logo Carousel Section */}
-      <LogoCarouselSection />
+      {/* Logo Carousel Section - Hidden for now */}
+      {/* <LogoCarouselSection /> */}
 
-      {/* Catalog Section */}
-      <section id="catalog" className="py-16">
+      {/* Catalog Section - White background */}
+      <section id="catalog" className="py-16 bg-white">
         <main className="max-w-[1320px] mx-auto px-6">
-          {/* Instructions */}
-          <div className="bg-card rounded-lg shadow-sm border border-border p-6 mb-12">
-            <h2 className="text-lg font-semibold text-foreground mb-6">How it works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                    1
-                  </div>
-                  <h3 className="font-medium text-foreground">Browse Skills</h3>
-                </div>
-                <p className="text-sm text-muted-foreground pl-11">
-                  Explore our library of AI skills and agents for marketing
-                </p>
+          {/* Instructions - Subtle, part of the section */}
+          <div className="mb-10">
+            <p className="text-sm text-[#6B7280] mb-4">How it works</p>
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-[#523BE1] font-bold">1.</span>
+                <span className="text-[#2D2D2D]">Browse skills</span>
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                    2
-                  </div>
-                  <h3 className="font-medium text-foreground">Download & Learn</h3>
-                </div>
-                <p className="text-sm text-muted-foreground pl-11">
-                  Click any skill to see details and download with setup instructions
-                </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[#523BE1] font-bold">2.</span>
+                <span className="text-[#2D2D2D]">Download & learn</span>
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-secondary text-foreground font-semibold text-sm">
-                    3
-                  </div>
-                  <h3 className="font-medium text-foreground">Start Using</h3>
-                </div>
-                <p className="text-sm text-muted-foreground pl-11">
-                  Add the skill to your AI assistant and start getting better results
-                </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[#523BE1] font-bold">3.</span>
+                <span className="text-[#2D2D2D]">Start using</span>
               </div>
             </div>
           </div>

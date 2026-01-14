@@ -109,12 +109,12 @@ export default function CustomRequestSection() {
 
   if (showSuccess) {
     return (
-      <section id="custom-request" className="py-16 bg-background">
+      <section id="custom-request" className="py-16 bg-[#37CCBA]">
         <div className="max-w-[1320px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-card rounded-lg shadow-sm border border-border p-12 text-center"
+            className="bg-white rounded-xl shadow-sm border border-white/20 p-12 text-center"
           >
             <div className="flex justify-center mb-6">
               <div className="rounded-full bg-green-500/10 p-4">
@@ -144,18 +144,18 @@ export default function CustomRequestSection() {
   }
 
   return (
-    <section id="custom-request" className="py-16 bg-background">
+    <section id="custom-request" className="py-16 bg-[#37CCBA]">
       <div className="max-w-[1320px] mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2D2D2D] mb-4">
             Need Something Custom?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tell us about your challenge and we'll build an AI agent tailored to your needs.
+          <p className="text-lg text-[#2D2D2D]/80 max-w-2xl mx-auto">
+            Tell Willem about your challenge and he&apos;ll build an AI agent tailored to your needs.
           </p>
         </div>
 
-        <div className="bg-card rounded-lg shadow-sm border border-border p-8 max-w-3xl mx-auto">
+        <div className="bg-white rounded-xl shadow-lg border border-white/20 p-8 max-w-3xl mx-auto">
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               {[1, 2, 3, 4].map((step) => (

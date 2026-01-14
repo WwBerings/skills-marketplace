@@ -116,3 +116,4 @@ npm run lint   # Check for linting issues
 - Verify RLS policies allow anonymous inserts
 - Test server action in DevTools Network tab
 
+
